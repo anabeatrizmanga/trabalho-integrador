@@ -1,0 +1,154 @@
+/* RESET */
+* {
+  margin: 10px;
+  padding: 0;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to bottom, #a8d8ff, #ffffff, #ffc0cb);
+  min-height: 100vh;
+  padding: 20px;
+  color: #333;
+}
+
+/* TÍTULO */
+imagemLogo {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: white;
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+}
+
+/* NAVBAR */
+nav {
+  margin-bottom: 30px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 18px;
+  border-radius: 20px;
+  margin: 5px;
+  display: inline-block;
+  transition: 0.3s;
+  font-size: 1.2rem
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+/* FORMULÁRIO */
+form {
+  max-width: 700px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* LABELS */
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* INPUTS */
+input,
+select,
+textarea {
+  width: 90%;
+  padding: 12px;
+  border: none;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* RADIO E CHECKBOX */
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+/* TEXTAREA */
+textarea {
+  resize: none;
+}
+
+/* BOTÃO */
+button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
+  background: #ff9ecb;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff7eb3;
+  transform: scale(1.02);
+}
+
+/* RESULTADO */
+#resultado {
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+}
+
+/* inputs */
+#inNome:focus {
+  border: 2px solid #ff7eb3;
+  box-shadow: 0 0 5px rgba(255, 126, 179, 0.5);
+}
+
+#tipoDeProduto:focus {
+  border: 2px solid #ff7eb3;
+  box-shadow: 0 0 5px rgba(255, 126, 179, 0.5);
+}
+
+#tipoDeEspeciaisDaCasa:focus {
+  border: 2px solid #ff7eb3;
+  box-shadow: 0 0 5px rgba(255, 126, 179, 0.5);
+}
+
+#sabor:focus {
+  border: 2px solid #ff7eb3;
+  box-shadow: 0 0 5px rgba(255, 126, 179, 0.5);
+}
+
+.imagemLogo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}

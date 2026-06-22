@@ -1,0 +1,686 @@
+* {
+  margin: 10px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* variáveis */
+:root {
+
+  --azul: #a8d8ff;
+  --rosa: #ffc0cb;
+  --rosa-hover: #ff7eb3;
+  --branco: #ffffff;
+  --texto: #333;
+  --card: rgba(255, 255, 255, 0.75);
+  --sombra: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --radius: 25px;
+  --tituloNuvem: #2b4c7e;
+  --subtexto: #f9f9f9;
+  --rosa-botao: #ffcfd9;
+
+}
+
+body {
+
+  font-family: 'Fredoka', Arial, Helvetica, sans-serif;
+  background: linear-gradient(to bottom, var(--azul), var(--branco), var(--rosa));
+  color: var(--texto);
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* negrito */
+
+strong {
+  color: var(--rosa);
+}
+
+/* header */
+
+header {
+
+  padding: 20px 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagemLogo {
+
+  width: 1250px;
+  max-width: 100%;
+}
+
+/* titulos */
+
+.tituloNuvem {
+
+  color: var(--tituloNuvem);
+  font-family: 'Fredoka', sans-serif;
+  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* menu */
+
+nav {
+
+  padding: 20px 5%;
+}
+
+nav ul {
+
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+nav a {
+
+  text-decoration: none;
+  color: var(--branco);
+  background: rgba(255, 255, 255, 0.2);
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.cadastroLogin {
+
+  background: var(--rosa-botao);
+}
+
+.cadastroLogin:hover {
+
+  background: var(--rosa-hover);
+  transform: scale(1.05);
+}
+
+nav a:hover {
+
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+/* main */
+
+main {
+
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+main h3 {
+
+  font-size: 2.8rem;
+  color: var(--branco);
+  margin-bottom: 30px;
+}
+
+.textoInicial {
+
+  background: var(--card);
+  padding: 35px;
+  border-radius: var(--radius);
+  line-height: 1.8;
+  box-shadow: var(--sombra);
+  font-size: 1.1rem;
+}
+
+/* subtexto */
+
+.subtexto {
+
+  text-align: center;
+  font-size: 2rem;
+  margin: 50px 0 25px;
+  color: var(--subtexto);
+}
+
+table {
+
+  margin: 20px auto;
+  width: 100%;
+}
+
+tbody {
+
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+tr {
+  display: contents;
+}
+
+td {
+
+  background: rgba(255, 255, 255, 0.7);
+  padding: 15px 25px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+  min-width: 160px;
+  text-align: center;
+  box-shadow: var(--sombra);
+}
+
+td:hover {
+
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* blocos */
+
+.bloco,
+.blocoInvertido {
+
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  margin: 120px auto;
+  max-width: 1400px;
+}
+
+.bloco {
+  flex-direction: row;
+}
+
+.blocoInvertido {
+  flex-direction: row-reverse;
+}
+
+/* imagens */
+
+.imagemum img,
+.imagemdois img,
+.imagemtres img {
+
+  width: 770px;
+  max-width: 100%;
+  border-radius: 25px;
+  box-shadow: var(--sombra);
+  transition: 0.3s;
+}
+
+.imagemum img:hover,
+.imagemdois img:hover,
+.imagemtres img:hover {
+
+  transform: scale(1.02);
+}
+
+/* cards */
+
+.cardum,
+.carddois,
+.cardtres {
+
+  width: 500px;
+  max-width: 100%;
+}
+
+.cardum p,
+.carddois p,
+.cardtres p {
+
+  background: rgba(255, 255, 255, 0.75);
+  padding: 35px;
+  border-radius: 25px;
+  line-height: 1.8;
+  box-shadow: var(--sombra);
+  font-size: 1.05rem;
+}
+
+/* depoimentos */
+
+.depoimentos {
+
+  margin-top: 100px;
+  text-align: center;
+}
+
+.tituloDepoimentos {
+
+  font-size: 2.5rem;
+  color: var(--tituloNuvem);
+  margin-bottom: 50px;
+}
+
+.cardsDepoimentos {
+
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.depoimento {
+
+  width: 320px;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: var(--sombra);
+  transition: 0.3s;
+}
+
+.depoimento:hover {
+
+  transform: translateY(-10px);
+}
+
+.depoimento h3 {
+
+  margin-bottom: 20px;
+  color: var(--rosa-hover);
+}
+
+.depoimento p {
+
+  line-height: 1.8;
+}
+
+/* estatisticas */
+
+.estatisticas {
+
+  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.estatistica {
+
+  background: rgba(255, 255, 255, 0.75);
+  padding: 35px;
+  border-radius: 25px;
+  width: 250px;
+  text-align: center;
+  box-shadow: var(--sombra);
+  transition: 0.3s;
+}
+
+.estatistica:hover {
+
+  transform: scale(1.05);
+}
+
+.estatistica h2 {
+
+  font-size: 2.5rem;
+  color: var(--tituloNuvem);
+  margin-bottom: 10px;
+}
+
+/* forms */
+
+.formularioContato {
+
+  max-width: 800px;
+  margin: 100px auto;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 50px;
+  border-radius: 30px;
+  box-shadow: var(--sombra);
+}
+
+.formularioContato h2 {
+
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--tituloNuvem);
+}
+
+form {
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.campo {
+
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.campo input,
+.campo textarea {
+
+  padding: 18px;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* focus */
+
+.campo input:focus,
+.campo textarea:focus {
+
+  border-color: var(--rosa-hover);
+  box-shadow: 0 0 10px rgba(255, 126, 179, 0.4);
+}
+
+/* validação */
+
+.campo input:valid,
+.campo textarea:valid {
+
+  border-color: #7ed957;
+}
+
+.campo input:invalid,
+.campo textarea:invalid {
+
+  border-color: #ff6b6b;
+}
+
+.campo textarea {
+
+  min-height: 150px;
+  resize: none;
+}
+
+/* redes sociais (insta) */
+
+.redesSociais {
+
+  text-align: center;
+  margin: 80px auto;
+  padding: 50px 30px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 25px;
+  box-shadow: var(--sombra);
+  max-width: 1000px;
+}
+
+.redesSociais h3 {
+
+  color: var(--texto);
+  margin-bottom: 25px;
+}
+
+/* botoes */
+
+button {
+
+  padding: 14px 28px;
+  border: none;
+  border-radius: 20px;
+  background: var(--rosa);
+  color: var(--branco);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+
+  background: var(--rosa-hover);
+  transform: scale(1.05);
+}
+
+/* video do espaço */
+
+.video {
+
+  display: flex;
+  justify-content: center;
+}
+
+.video iframe {
+
+  width: 90%;
+  max-width: 900px;
+  height: 500px;
+  border: none;
+}
+
+/* historia */
+
+.historia {
+
+  max-width: 900px;
+  margin: 70px auto;
+  background: var(--card);
+  padding: 40px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--sombra);
+  border-left: 5px solid var(--rosa);
+}
+
+.historia p {
+
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+/* sections */
+
+section {
+
+  max-width: 1200px;
+  margin: auto;
+}
+
+section h4 {
+
+  margin-bottom: 15px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+section h4 a {
+
+  text-decoration: underline var(--texto) 2px;
+  color: var(--texto);
+}
+
+/* footer */
+
+footer {
+
+  margin-top: 70px;
+  padding: 35px 20px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.footer-links {
+
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+
+  color: var(--branco);
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 40px;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* imagens do rodape*/
+.imagemHome,
+.imagemSobre,
+.imagemFormulario,
+.imagemCardapio {
+
+  width: 24px;
+  transition: 0.3s;
+}
+
+.fraseRodape {
+
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  color: var(--texto);
+  margin-bottom: 15px;
+}
+
+.contatoRodape {
+
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.imagemRodape {
+
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.imagemLogoRodape {
+
+  width: 150px;
+  transition: 0.3s;
+}
+
+/* adequação a outros dispositivos */
+
+/* tablets */
+@media (max-width: 992px) {
+
+  main h3 {
+    font-size: 2.2rem;
+  }
+
+  .video iframe {
+    height: 400px;
+  }
+}
+
+/* celulares */
+@media (max-width: 768px) {
+
+  nav ul {
+
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  nav a {
+
+    width: 90%;
+
+    text-align: center;
+  }
+
+  main h3 {
+
+    font-size: 1.8rem;
+  }
+
+  .subtexto {
+
+    font-size: 1.5rem;
+  }
+
+  tbody {
+
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  td {
+    width: 90%;
+  }
+
+  .bloco,
+  .blocoInvertido {
+
+    flex-direction: column;
+
+    gap: 30px;
+
+    margin: 70px auto;
+  }
+
+  .imagemum,
+  .imagemdois,
+  .imagemtres {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+  }
+
+  .cardum,
+  .carddois,
+  .cardtres {
+
+    width: 92%;
+  }
+
+  .depoimento,
+  .estatistica {
+
+    width: 90%;
+  }
+
+  .formularioContato {
+
+    width: 92%;
+
+    padding: 30px;
+  }
+
+  .video iframe {
+
+    height: 250px;
+  }
+
+  .footer-links {
+
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .footer-links a {
+
+    width: 90%;
+
+    text-align: center;
+  }
+}

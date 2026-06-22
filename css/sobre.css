@@ -1,0 +1,107 @@
+/* RESET */
+* {
+  margin: 10px;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* variáveis */
+:root {
+
+  --azul: #a8d8ff;
+  --rosa: #ffc0cb;
+  --rosa-hover: #ff7eb3;
+  --branco: #ffffff;
+  --texto: #333;
+  --card: rgba(255, 255, 255, 0.75);
+  --sombra: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --radius: 25px;
+  --tituloNuvem: #2b4c7e;
+  --subtexto: #f9f9f9;
+  --rosa-botao: #ffcfd9;
+
+}
+/* BODY */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to bottom, #a8d8ff, #ffffff, #ffc0cb);
+  color: #333;
+  text-align: center;
+  padding: 20px;
+}
+
+/* TÍTULO */
+h2 {
+  color: white;
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+/* NAV */
+nav {
+
+  padding: 20px 5%;
+}
+
+nav ul {
+
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+nav a {
+
+  text-decoration: none;
+  color: var(--branco);
+  background: rgba(255, 255, 255, 0.2);
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+
+/* CONTEÚDO */
+main {
+  max-width: 800px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: left;
+}
+
+/* PARÁGRAFOS */
+p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* SUBTÍTULOS */
+h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #ff7eb3;
+}
+
+/* DESTAQUE */
+.subtexto {
+  font-size: 1.2rem;
+}
+
+/* EFEITO LEVE */
+main:hover {
+  transform: scale(1.01);
+  transition: 0.3s;
+}
+.imagemLogo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  justify-content: left;
+}
