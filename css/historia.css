@@ -91,3 +91,71 @@ div p:hover {
   display: flex;
   justify-content: left;
 }
+footer {
+
+  margin-top: 70px;
+  padding: 35px 20px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.footer-links {
+
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+
+  color: var(--branco);
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 40px;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* imagens do rodape*/
+.imagemHome,
+.imagemSobre,
+.imagemFormulario,
+.imagemCardapio {
+
+  width: 24px;
+  transition: 0.3s;
+}
+
+.fraseRodape {
+
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  color: var(--texto);
+  margin-bottom: 15px;
+}
+
+.contatoRodape {
+
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.imagemRodape {
+
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.imagemLogoRodape {
+
+  width: 150px;
+  transition: 0.3s;
+}
