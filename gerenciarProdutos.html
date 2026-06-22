@@ -1,15 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/cadastroLogin.css">
-    <title>Document</title>
+    <title>Gerenciamento de Sorvetes</title>
+
+    <link rel="stylesheet" href="../css/gerenciarProdutos.css">
 </head>
 
 <body>
-    
+
+    <header>
+        <h1>🍦 Gerenciamento de Sorvetes</h1>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="contato.html">Contato</a>
+            <a href="cardapio.html">Cardápio</a>
+            <a href="formulario.html">Formulário</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="form-container">
+
+            <h2>Cadastro de Sorvetes</h2>
+
+            <div class="form-group">
+                <label for="inNome">Nome do Sorvete</label>
+                <input type="text" id="inNome" placeholder="Ex: Copo Nuvem">
+            </div>
+
+            <div class="form-group">
+                <label for="inTipo">Tipo de Produto</label>
+
+                <select id="inTipo">
+                    <option value="" selected disabled>Selecione o Tipo</option>
+                    <option value="sorvete">Sorvete</option>
+                    <option value="acai">Açaí</option>
+                    <option value="milkshake">Milkshake</option>
+                    <option value="especial">Especial da Casa</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inSabor">Sabor</label>
+                <select id="inSabor">
+                    <option value="" selected disabled>Selecione o Sabor</option>
+                    <option value="nuvemChocolate">Nuvem de Chocolate 🍫</option>
+                    <option value="nuvemBaunilha">Nuvem de Baunilha 🤍</option>
+                    <option value="nuvemMorango">Nuvem de Morango 🍓</option>
+                    <option value="flocos">Flocos Celestiais 🍪</option>
+                    <option value="cocoCremoso">Coco Cremoso 🥥</option>
+                    <option value="maracuja">Maracujá Tropical 💛</option>
+                    <option value="manga">Manga Doce 🧡</option>
+                    <option value="uva">Uva 🍇</option>
+                    <option value="limao">Limão 🍋</option>
+                    <option value="abacaxi">Abacaxi 🍍</option>
+                    <option value="manga">Manga 🧡</option>
+                    <option value="leiteCondensado">Leite condensado 🥛</option>
+                    <option value="ninhoComChocolate">Ninho com chocolate 🍫</option>
+                    <option value="morangoCremoso">Morango cremoso 🍓</option>
+                    <option value="doceDeLeite">Doce de leite 🤎</option>
+                    <option value="coco">Coco 🥥</option>
+                    <option value="banana">Banana 🍌</option>
+                    <option value="chocolateSupremo">Chocolate Supremo 🍫</option>
+                    <option value="baunilhaClassico">Baunilha Clássico 🤍</option>
+                    <option value="ovomaltine">Ovomaltine 🤎</option>
+                    <option value="cookiesAndCream">Cookies & Cream 🍪</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inPreco">Preço (R$)</label>
+                <input type="number" id="inPreco" min="0" step="0.01" placeholder="Ex: 12.50">
+            </div>
+
+            <div class="form-group">
+                <label for="inEstoque">Quantidade em Estoque</label>
+                <input type="number" id="inEstoque" min="0" placeholder="Ex: 25">
+            </div>
+
+            <div class="botoes">
+                <button id="btCadastrar">Cadastrar</button>
+                <button id="btMostrar">Mostrar Todos</button>
+                <button id="btConsultar">Consultar</button>
+                <button id="btExcluir">Excluir</button>
+            </div>
+
+        </div>
+
+        <div class="filtro-container">
+
+            <h2>Filtros</h2>
+
+            <div class="form-group">
+                <label for="inFiltroSabor">Filtrar por Sabor</label>
+
+                <select id="inFiltroSabor">
+                    <option value="">Todos os sabores</option>
+                    <option value="nuvemChocolate">Nuvem de Chocolate 🍫</option>
+                    <option value="nuvemBaunilha">Nuvem de Baunilha 🤍</option>
+                    <option value="nuvemMorango">Nuvem de Morango 🍓</option>
+                    <option value="flocos">Flocos Celestiais 🍪</option>
+                    <option value="cocoCremoso">Coco Cremoso 🥥</option>
+                    <option value="maracuja">Maracujá Tropical 💛</option>
+                    <option value="manga">Manga Doce 🧡</option>
+                    <option value="uva">Uva 🍇</option>
+                    <option value="limao">Limão 🍋</option>
+                    <option value="abacaxi">Abacaxi 🍍</option>
+                    <option value="manga">Manga 🧡</option>
+                    <option value="leiteCondensado">Leite condensado 🥛</option>
+                    <option value="ninhoComChocolate">Ninho com chocolate 🍫</option>
+                    <option value="morangoCremoso">Morango cremoso 🍓</option>
+                    <option value="doceDeLeite">Doce de leite 🤎</option>
+                    <option value="coco">Coco 🥥</option>
+                    <option value="banana">Banana 🍌</option>
+                    <option value="chocolateSupremo">Chocolate Supremo 🍫</option>
+                    <option value="baunilhaClassico">Baunilha Clássico 🤍</option>
+                    <option value="ovomaltine">Ovomaltine 🤎</option>
+                    <option value="cookiesAndCream">Cookies & Cream 🍪</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inFiltroTipo">Filtrar por Tipo</label>
+
+                <select id="inFiltroTipo">
+                    <option value="">Todos os tipos</option>
+                    <option value="sorvete">Sorvete</option>
+                    <option value="acai">Açaí</option>
+                    <option value="milkshake">Milkshake</option>
+                    <option value="especial">Especial da Casa</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inFiltroPreco">Faixa de Preço</label>
+
+                <select id="inFiltroPreco">
+                    <option value="">Todos</option>
+                    <option value="baixo">Até R$ 10,00</option>
+                    <option value="medio">R$ 10,01 até R$ 20,00</option>
+                    <option value="alto">Acima de R$ 20,00</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inFiltroEstoque">Disponibilidade</label>
+
+                <select id="inFiltroEstoque">
+                    <option value="">Todos</option>
+                    <option value="disponivel">Em Estoque</option>
+                    <option value="baixo">Estoque Baixo</option>
+                    <option value="esgotado">Esgotado</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inFiltroNome">Buscar Produto</label>
+
+                <input type="text" id="inFiltroNome" placeholder="Digite o nome do produto">
+            </div>
+
+            <div class="botoes">
+                <button id="btFiltrar">Filtrar</button>
+                <button id="btEstoqueBaixo">Estoque Menor que 10</button>
+            </div>
+
+        </div>
+
+        <div class="form-container">
+
+            <h2>Resultados</h2>
+
+            <pre id="outSaida"></pre>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Sorveteria Nuvem | Projeto Integrador</p>
+    </footer>
+
+    <script src="../js/gerenciarProdutos.js"></script>
+
 </body>
 
 </html>
