@@ -4,23 +4,6 @@
   box-sizing: border-box;
 }
 
-/* variáveis */
-:root {
-
-  --azul: #a8d8ff;
-  --rosa: #ffc0cb;
-  --rosa-hover: #ff7eb3;
-  --branco: #ffffff;
-  --texto: #333;
-  --card: rgba(255, 255, 255, 0.75);
-  --sombra: 0 8px 20px rgba(0, 0, 0, 0.15);
-  --radius: 25px;
-  --tituloNuvem: #2b4c7e;
-  --subtexto: #f9f9f9;
-  --rosa-botao: #ffcfd9;
-
-}
-
 body {
 
   font-family: 'Fredoka', Arial, Helvetica, sans-serif;

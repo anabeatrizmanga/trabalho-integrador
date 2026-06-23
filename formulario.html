@@ -5,19 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/formulario.css">
+  <link rel="stylesheet" href="css/varGlobais.css">
+
   <title>Formulário</title>
 </head>
 
 <body>
 
-  <img class="imagemLogo" src="https://i.postimg.cc/Hn2NvkPz/Chat-GPT-Image-7-de-mai-de-2026-08-58-35.png" alt="logo"><h2>🍦 Monte seu sorvete</h2>
+  <img class="imagemLogo" src="https://i.postimg.cc/Hn2NvkPz/Chat-GPT-Image-7-de-mai-de-2026-08-58-35.png" alt="logo">
+  <h2>🍦 Monte seu sorvete</h2>
 
   <nav>
     <ul>
-      <a href="./index.html">Home</a> 
-      <a href="./sobre.html">Sobre</a> 
-      <a href="./contato.html">Contato</a> 
-      <a href="cardapio.html">Cardápio</a> 
+      <a href="./index.html">Home</a>
+      <a href="./sobre.html">Sobre</a>
+      <a href="./contato.html">Contato</a>
+      <a href="cardapio.html">Cardápio</a>
     </ul>
   </nav>
 
@@ -25,8 +28,9 @@
 
     <!-- Nome -->
     <label for="nomeDoUsuario">Nome:</label><br>
-    <input type="text" id="inNome" placeholder="Digite seu nome" required oninvalid="this.setCustomValidity('Informe seu nome')"
-      oninput="this.setCustomValidity('')" min="1" max="100"><br><br>
+    <input type="text" id="inNome" placeholder="Digite seu nome" required
+      oninvalid="this.setCustomValidity('Informe seu nome')" oninput="this.setCustomValidity('')" min="1"
+      max="100"><br><br>
 
     <!--Tipo de Produto-->
     <label for="produtos">Escolha o tipo:</label><br>
@@ -97,12 +101,13 @@
 
     <!-- Endereço de Entrega -->
     <label for="endereco">Endereço de Entrega:</label><br>
-    <input type="text" id="endereco" placeholder="Digite seu endereço completo, incluindo número e complemento" required oninvalid="this.setCustomValidity('Informe seu endereço')"
-      oninput="this.setCustomValidity('')"><br><br>
+    <input type="text" id="endereco" placeholder="Digite seu endereço completo, incluindo número e complemento" required
+      oninvalid="this.setCustomValidity('Informe seu endereço')" oninput="this.setCustomValidity('')"><br><br>
 
     <!--Espaço para as obervações-->
     <label for="observarções">Observarções</label><br>
-    <textarea name="ObservarçõesSorvetes" id="Observarções" rows="4" cols="30" required placeholder="Informe caso necessite de alguma alteração, caso não tenha nenhuma observação, escreva 'Sem Observações'"
+    <textarea name="ObservarçõesSorvetes" id="Observarções" rows="4" cols="30" required
+      placeholder="Informe caso necessite de alguma alteração, caso não tenha nenhuma observação, escreva 'Sem Observações'"
       oninvalid="this.setCustomValidity('Informe caso necessite de alguma alteração')"
       oninput="this.setCustomValidity('')" minlength="1" maxlength="100"></textarea>
     <br><br>
@@ -115,49 +120,46 @@
   <h3 id="resultado"></h3>
   <footer>
 
-        <div class="footer-links">
+    <div class="footer-links">
 
-            <a href="./index.html"><img class="imagemHome" src='https://i.postimg.cc/4d2CfJrP/home-(4).png'></a>
+      <a href="./index.html"><img class="imagemHome" src='https://i.postimg.cc/4d2CfJrP/home-(4).png'></a>
 
-            <a href="./sobre.html"><img class="imagemSobre" src='https://i.postimg.cc/WpDpdKXT/info-(1).png'></a>
+      <a href="./sobre.html"><img class="imagemSobre" src='https://i.postimg.cc/WpDpdKXT/info-(1).png'></a>
 
-            <a href="./formulario.html"><img class="imagemFormulario"
-                    src="https://i.postimg.cc/261YBbdH/form-(2).png"></a>
+      <a href="./formulario.html"><img class="imagemFormulario" src="https://i.postimg.cc/261YBbdH/form-(2).png"></a>
 
-            <a href="./cardapio.html"><img class="imagemCardapio"
-                    src="https://i.postimg.cc/bNDPvtYn/menu-food-(1).png"></a>
+      <a href="./cardapio.html"><img class="imagemCardapio" src="https://i.postimg.cc/bNDPvtYn/menu-food-(1).png"></a>
 
-            <a href="https://www.instagram.com/sorveterianuvem/"><img class="imagemInstagramRodape"
-                    src="https://i.postimg.cc/pTkgkDxD/simbolo-do-instagram-(1).png"></a>
+      <a href="https://www.instagram.com/sorveterianuvem/"><img class="imagemInstagramRodape"
+          src="https://i.postimg.cc/pTkgkDxD/simbolo-do-instagram-(1).png"></a>
 
-        </div>
-        <div class="fraseRodape">
-            <p>
-                &copy; 2026 Sorveteria Nuvem | Projeto Integrador 
-            </p>
-        </div>
+    </div>
+    <div class="fraseRodape">
+      <p>
+        &copy; 2026 Sorveteria Nuvem | Projeto Integrador
+      </p>
+    </div>
 
-        </div>
-        <div class="contatoRodape">
-            </p>
-            <!--contato-->
-            <p>
-                <img src='https://i.postimg.cc/13v8ZFv3/phone-call-(1).png' alt='Contato'> • (27) 99999-9999
-            </p>
-            <!--localização-->
-            <p>
-                <img src='https://i.postimg.cc/9fcr6pPX/email-heart.png' alt='Informações'> • sorveterianuvem@gmail.com
-            </p>
-        </div>
-        <div class="imagemRodape">
+    </div>
+    <div class="contatoRodape">
+      </p>
+      <!--contato-->
+      <p>
+        <img src='https://i.postimg.cc/13v8ZFv3/phone-call-(1).png' alt='Contato'> • (27) 99999-9999
+      </p>
+      <!--localização-->
+      <p>
+        <img src='https://i.postimg.cc/9fcr6pPX/email-heart.png' alt='Informações'> • sorveterianuvem@gmail.com
+      </p>
+    </div>
+    <div class="imagemRodape">
 
-            <img class="imagemLogoRodape"
-                src="https://i.postimg.cc/Hn2NvkPz/Chat-GPT-Image-7-de-mai-de-2026-08-58-35.png"
-                alt='logoSorveteriaNuvemRodape'>
+      <img class="imagemLogoRodape" src="https://i.postimg.cc/Hn2NvkPz/Chat-GPT-Image-7-de-mai-de-2026-08-58-35.png"
+        alt='logoSorveteriaNuvemRodape'>
 
-        </div>
+    </div>
 
-    </footer>
+  </footer>
 </body>
 
 </html>
