@@ -43,8 +43,8 @@ var vetDisponibilidade = [
 var vetProdutos = [];
 
 const inNome = document.getElementById("inNome");
-const inTipo = document.getElementById("inTipo");
-const inSabor = document.getElementById("inSabor");
+const sltTipo = document.getElementById("sltTipo");
+const sltSabor = document.getElementById("sltSabor");
 const inPreco = document.getElementById("inPreco");
 const inEstoque = document.getElementById("inEstoque");
 
@@ -71,21 +71,46 @@ btExcluir.addEventListener("click", excluirProduto);
 
 function cadastrarProduto() {
 
+    var nomeProduto = inNome.value;
+    var tipoProduto = sltTipo.value;
+    var saborProduto = sltSabor.value;
+    var precoProduto = inPreco.value;
+    var estoqueProduto = inEstoque.value;
+
     var produto = {
-        nome: inNome.value,
-        tipo: inTipo.value,
-        sabor: inSabor.value,
-        preco: Number(inPreco.value),
-        estoque: Number(inEstoque.value)
+        nome: nomeProduto,
+        tipo: tipoProduto,
+        sabor: saborProduto,
+        preco: precoProduto,
+        estoque: estoqueProduto
     };
 
-    vetProdutos.push(produto);
 
-    console.log(vetProdutos);
 
-    alert("Produto cadastrado!");
+    if (inNome.value == "") {
+        alert("Campo nome deixado vazio!");
+        inNome.focus();
+    } else if (sltTipo.value == 1) {
+        alert("Campo tipo de produto deixado vazio!");
+        sltTipo.focus();
+    } else if (sltSabor.value == 1) {
+        alert("Campo sabor deixado vazio!");
+        sltSabor.focus();
+    } else if (precoProduto < 0) {
+        alert("Campo preço com valor < 0");
+        inPreco.focus();
+    } else if (estoqueProduto <= 0) {
+        alert("Campo estoque deve ser > 0");
+        inEstoque.focus();
+    } else {
+        vetProdutos.push(produto);
 
-    limparCampos();
+        console.log(vetProdutos);
+
+        alert("Produto cadastrado!");
+
+        limparCampos();
+    }
 }
 
 function mostrarProdutos() {
@@ -157,8 +182,8 @@ function excluirProduto() {
 function limparCampos() {
 
     inNome.value = "";
-    inTipo.selectedIndex = 0;
-    inSabor.selectedIndex = 0;
+    sltTipo.selectedIndex = 0;
+    sltSabor.selectedIndex = 0;
     inPreco.value = "";
     inEstoque.value = "";
 }
