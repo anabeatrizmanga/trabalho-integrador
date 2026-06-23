@@ -8,7 +8,7 @@
 
 /* BODY */
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Fredoka', Arial, Helvetica, sans-serif;
   background: linear-gradient(to bottom, #a8d8ff, #ffffff, #ffc0cb);
   min-height: 100vh;
   padding: 20px;
