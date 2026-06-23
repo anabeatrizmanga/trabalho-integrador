@@ -61,7 +61,8 @@ const btExcluir = document.getElementById("btExcluir");
 const btFiltrar = document.getElementById("btFiltrar");
 const btEstoqueBaixo = document.getElementById("btEstoqueBaixo");
 
-const outSaida = document.getElementById("outSaida");
+const outCadastro = document.getElementById("outCadastro");
+const outFiltro = document.getElementById("outFiltro");
 
 btCadastrar.addEventListener("click", cadastrarProduto);
 btMostrar.addEventListener("click", mostrarProdutos);
@@ -89,11 +90,11 @@ function cadastrarProduto() {
 
 function mostrarProdutos() {
 
-    outSaida.textContent = "";
+    outCadastro.textContent = "";
 
     for (var ind = 0; ind < vetProdutos.length; ind++) {
 
-        outSaida.textContent += "Nome: " + vetProdutos[ind].nome +
+        outCadastro.textContent += "Nome: " + vetProdutos[ind].nome +
             "\nTipo: " + vetProdutos[ind].tipo +
             "\nSabor: " + vetProdutos[ind].sabor +
             "\nPreço: R$ " + vetProdutos[ind].preco.toFixed(2) +
@@ -105,19 +106,22 @@ function consultarProduto() {
 
     var nome = inNome.value;
 
-    outSaida.textContent = "";
+    if (outCadastro.textContent == "") {
 
+        outCadastro.textContent = "Produto não encontrado.";
+    }
     for (var ind = 0; ind < vetProdutos.length; ind++) {
 
         if (vetProdutos[ind].nome.toUpperCase() == nome.toUpperCase()) {
 
-            outSaida.textContent = "Nome: " + vetProdutos[ind].nome +
+            outCadastro.textContent = "Nome: " + vetProdutos[ind].nome +
                 "\nTipo: " + vetProdutos[ind].tipo +
                 "\nSabor: " + vetProdutos[ind].sabor +
                 "\nPreço: R$ " + vetProdutos[ind].preco.toFixed(2) +
                 "\nEstoque: " + vetProdutos[ind].estoque;
         }
     }
+
     limparCampos();
 }
 
@@ -138,9 +142,9 @@ function excluirProduto() {
 
     if (encontrou == true) {
 
-        alert("Produto excluído!");
-
         mostrarProdutos();
+
+        alert("Produto excluído!");
 
         limparCampos();
 
