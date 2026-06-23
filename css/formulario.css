@@ -16,7 +16,7 @@ body {
 }
 
 /* TÍTULO */
-imagemLogo {
+.imagemLogo {
   display: flex;
   justify-content: left;
   margin-bottom: 20px;
@@ -51,7 +51,9 @@ nav a {
   margin: 5px;
   display: inline-block;
   transition: 0.3s;
-  font-size: 1.2rem
+  font-size: 1.2rem;
+  border: 2px solid var(--tituloNuvem);
+  color: var(--tituloNuvem);
 }
 
 nav a:hover {
