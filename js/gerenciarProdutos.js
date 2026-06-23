@@ -96,11 +96,11 @@ function cadastrarProduto() {
     } else if (sltSabor.value == 1) {
         alert("Campo sabor deixado vazio!");
         sltSabor.focus();
-    } else if (precoProduto < 0) {
-        alert("Campo preço com valor < 0");
+    } else if (precoProduto < 0 || inPreco.value == "") {
+        alert("Campo preço com valor < 0 ou deixado vazio!");
         inPreco.focus();
-    } else if (estoqueProduto <= 0) {
-        alert("Campo estoque deve ser > 0");
+    } else if (estoqueProduto <= 0 || inEstoque.value == "") {
+        alert("Campo estoque deve ser > 0 ou deixado vazio!");
         inEstoque.focus();
     } else {
         vetProdutos.push(produto);
