@@ -79,12 +79,12 @@ nav a {
   color: var(--tituloNuvem);
 }
 
-.cadastroLogin {
+.gerenciarProdutos {
 
   background: var(--rosa-botao);
 }
 
-.cadastroLogin:hover {
+.gerenciarProdutos:hover {
 
   background: var(--rosa-hover);
   transform: scale(1.05);

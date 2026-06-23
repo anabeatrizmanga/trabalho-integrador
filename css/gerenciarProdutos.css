@@ -44,9 +44,6 @@ h2 {
 nav {
     margin-bottom: 30px;
     text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 nav a {
