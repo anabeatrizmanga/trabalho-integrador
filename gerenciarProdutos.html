@@ -6,24 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/gerenciarProdutos.css">
     <link rel="stylesheet" href="css/varGlobais.css">
-     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <title>Document</title>
 </head>
 
 <body>
-
     <header>
-        <h1>🍦 Gerenciamento de Sorvetes</h1>
-
-        <nav>
-            <a href="index.html">Início</a>
-            <a href="sobre.html">Sobre</a>
-            <a href="contato.html">Contato</a>
-            <a href="cardapio.html">Cardápio</a>
-            <a href="formulario.html">Formulário</a>
-        </nav>
+        <img class="imagemLogo" src="https://i.postimg.cc/Hn2NvkPz/Chat-GPT-Image-7-de-mai-de-2026-08-58-35.png"
+            alt="logo">
     </header>
+     <h1>🍦 Gerenciamento de Sorvetes</h1>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        <a href="cardapio.html">Cardápio</a>
+        <a href="formulario.html">Formulário</a>
+    </nav>
+
 
     <main>
 
@@ -93,13 +94,15 @@
                 <button type="button" id="btExcluir">Excluir</button>
             </div>
 
-             <div class="form-container">
+            <div class="form-container-Cadastro">
 
-            <h2>Cadastro e Gerenciamento</h2>
+                <h2>Cadastro e Gerenciamento</h2>
 
-            <pre id="outCadastro"></pre>
+                <pre class="outCadastro" id="outCadastro"></pre>
 
-        </div>
+            </div>
+
+
 
         </div>
 
@@ -180,17 +183,17 @@
                 <button id="btFiltrar">Filtrar</button>
                 <button id="btEstoqueBaixo">Estoque Menor que 10</button>
             </div>
+            <div class="form-container-Cadastro">
 
+                <h2>Resultados dos Filtros</h2>
+
+                <pre id="outFiltro"></pre>
+
+            </div>
         </div>
 
 
-        <div class="form-container">
 
-            <h2>Resultados dos Filtros</h2>
-
-            <pre id="outFiltro"></pre>
-
-        </div>
 
     </main>
 
