@@ -61,11 +61,13 @@ nav ul {
   gap: 8px;
   flex-wrap: wrap;
   list-style: none;
-  
+}
+
+nav li {
+  margin-top: 20px;
 }
 
 nav a {
-
   text-decoration: none;
   color: var(--branco);
   background: rgba(255, 255, 255, 0.2);
