@@ -314,85 +314,6 @@ td:hover {
   margin-bottom: 10px;
 }
 
-/* forms */
-
-.formularioContato {
-
-  max-width: 800px;
-  margin: 100px auto;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 50px;
-  border-radius: 30px;
-  box-shadow: var(--sombra);
-}
-
-.formularioContato h2 {
-
-  text-align: center;
-  margin-bottom: 40px;
-  color: var(--tituloNuvem);
-}
-
-form {
-
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.campo {
-
-  display: flex;
-  flex-direction: column;
-}
-
-.campo label {
-
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.campo input,
-.campo textarea {
-
-  padding: 18px;
-  border: 2px solid transparent;
-  border-radius: 18px;
-  outline: none;
-  font-size: 1rem;
-  transition: 0.3s;
-  background: rgba(255, 255, 255, 0.9);
-}
-
-/* focus */
-
-.campo input:focus,
-.campo textarea:focus {
-
-  border-color: var(--rosa-hover);
-  box-shadow: 0 0 10px rgba(255, 126, 179, 0.4);
-}
-
-/* validação */
-
-.campo input:valid,
-.campo textarea:valid {
-
-  border-color: #7ed957;
-}
-
-.campo input:invalid,
-.campo textarea:invalid {
-
-  border-color: #ff6b6b;
-}
-
-.campo textarea {
-
-  min-height: 150px;
-  resize: none;
-}
-
 /* redes sociais (insta) */
 
 .redesSociais {
@@ -644,13 +565,6 @@ footer {
   .estatistica {
 
     width: 90%;
-  }
-
-  .formularioContato {
-
-    width: 92%;
-
-    padding: 30px;
   }
 
   .video iframe {
