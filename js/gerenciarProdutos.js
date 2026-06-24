@@ -344,3 +344,24 @@ function filtrarDisponibilidade() {
         }
     }
 }
+
+btEstoqueBaixo.addEventListener("click", exibirEstoqueBaixo);
+
+function exibirEstoqueBaixo() {
+    outFiltro.textContent = "";
+
+    if (vetProdutos.length == 0) {
+        alert("cadastre um produto!");
+    } else {
+        for (let ind = 0; ind < vetProdutos.length; ind++) {
+            let produto = vetProdutos[ind];
+            if (produto.estoque < 10) {
+                outFiltro.textContent += "Nome: " + produto.nome + "\n" +
+                    "Tipo: " + produto.tipo + "\n";
+                outFiltro.textContent += "Sabor: " + produto.sabor + "\n";
+                outFiltro.textContent += "Preço: R$ " + produto.preco.toFixed(2) + "\n";
+                outFiltro.textContent += "Estoque: " + produto.estoque + "\n\n";
+            }
+        }
+    }
+}
