@@ -104,12 +104,25 @@ function cadastrarProduto() {
     } else {
         vetProdutos.push(produto);
 
-        console.log(vetProdutos);
+        const jsonVetProdutos = JSON.stringify(vetProdutos);
+        console.log(jsonVetProdutos);
+
+        localStorage.setItem("listaprodutos", jsonVetProdutos);
 
         alert("Produto cadastrado!");
 
         limparCampos();
     }
+}
+
+function armazanarDados(produto) {
+
+    let vetProdutos = [];
+    vetProdutos.push(produto);
+    let jsonVetProdutos = JSON.stringify(vetProdutos);
+    localStorage.setItem("listaprodutos", jsonVetProdutos);
+
+    //localStorage.setItem("produtos", JSON.stringify([produto]));
 }
 
 function mostrarProdutos() {
