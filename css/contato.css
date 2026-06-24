@@ -74,6 +74,53 @@ section:hover {
   transform: scale(1.02);
 }
 
+.cardsContato {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 800px;
+  margin: 40px auto 70px;
+}
+
+.cardContato {
+  max-width: none;
+  min-height: 120px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 14px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 22px;
+  box-shadow: 0 12px 24px rgba(43, 76, 126, 0.12);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.cardContato:hover {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 16px 30px rgba(43, 76, 126, 0.18);
+  transform: translateY(-6px);
+}
+
+.cardContato h3 {
+  margin-bottom: 16px;
+  color: var(--rosa-hover);
+  font-size: 1.1rem;
+}
+
+.cardContato a {
+  color: var(--texto);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.cardContato p {
+  margin: 0;
+  line-height: 1.5;
+}
+
 /* SUBTÍTULOS */
 h3 {
   color: #ff7eb3;
@@ -91,16 +138,99 @@ section a:hover {
   color: #ff7eb3;
 }
 
-/* MAPA */
-footer {
-  margin-top: 40px;
+/* FORMULARIO */
+.formularioContato {
+  max-width: 800px;
+  margin: 100px auto;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 50px;
+  border-radius: 30px;
+  box-shadow: var(--sombra);
+}
+
+.formularioContato:hover {
+  transform: none;
+}
+
+.formularioContato h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--tituloNuvem);
+}
+
+.formularioContato form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.campo input,
+.campo textarea {
+  padding: 18px;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.campo input:focus,
+.campo textarea:focus {
+  border-color: var(--rosa-hover);
+  box-shadow: 0 0 10px rgba(255, 126, 179, 0.4);
+}
+
+.campo input:valid,
+.campo textarea:valid {
+  border-color: #7ed957;
+}
+
+.campo input:invalid,
+.campo textarea:invalid {
+  border-color: #ff6b6b;
+}
+
+.campo textarea {
+  min-height: 150px;
+  resize: none;
+}
+
+.formularioContato button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 20px;
+  background: var(--rosa);
+  color: var(--branco);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.formularioContato button:hover {
+  background: var(--rosa-hover);
+  transform: scale(1.05);
 }
 
 iframe {
   width: 90%;
-  max-width: 700px;
+  max-width: 800px;
   border-radius: 25px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+  margin-top: 40px;
 }
 .imagemLogo {
   width: 150px;
@@ -175,6 +305,29 @@ footer {
 
   section {
     width: 90%;
+  }
+
+  .cardsContato {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    width: 92%;
+    margin: 35px auto 50px;
+  }
+
+  .cardContato {
+    width: 100%;
+    min-height: 120px;
+    padding: 24px 18px;
+  }
+
+  .cardContato a {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .formularioContato {
+    width: 92%;
+    padding: 30px;
   }
 
   main {
