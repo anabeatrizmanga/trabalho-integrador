@@ -128,53 +128,138 @@ function mostrarProdutos() {
 
 function consultarProduto() {
 
-    var nome = inNome.value;
+    if (inNome.value == "" &&
+        sltTipo.value == "1" &&
+        sltSabor.value == "1" &&
+        inPreco.value == "" &&
+        inEstoque.value == "") {
 
-    if (outCadastro.textContent == "") {
+        alert("Informe algum dado para consulta!");
 
-        outCadastro.textContent = "Produto não encontrado.";
-    }
-    for (var ind = 0; ind < vetProdutos.length; ind++) {
+    } else {
 
-        if (vetProdutos[ind].nome.toUpperCase() == nome.toUpperCase()) {
+        var pesquisa;
 
-            outCadastro.textContent = "Nome: " + vetProdutos[ind].nome +
-                "\nTipo: " + vetProdutos[ind].tipo +
-                "\nSabor: " + vetProdutos[ind].sabor +
-                "\nPreço: R$ " + vetProdutos[ind].preco.toFixed(2) +
-                "\nEstoque: " + vetProdutos[ind].estoque;
+        if (inNome.value != "") {
+            pesquisa = inNome.value;
         }
-    }
 
-    limparCampos();
+        if (sltTipo.value != "1") {
+            pesquisa = sltTipo.value;
+        }
+
+        if (sltSabor.value != "1") {
+            pesquisa = sltSabor.value;
+        }
+
+        if (inPreco.value != "") {
+            pesquisa = inPreco.value;
+        }
+
+        if (inEstoque.value != "") {
+            pesquisa = inEstoque.value;
+        }
+
+        var encontrou = false;
+
+        outCadastro.textContent = "";
+
+        for (var ind = 0; ind < vetProdutos.length; ind++) {
+
+            if (
+                vetProdutos[ind].nome.toUpperCase() == pesquisa.toUpperCase() ||
+                vetProdutos[ind].tipo.toUpperCase() == pesquisa.toUpperCase() ||
+                vetProdutos[ind].sabor.toUpperCase() == pesquisa.toUpperCase() ||
+                vetProdutos[ind].preco == Number(pesquisa) ||
+                vetProdutos[ind].estoque == Number(pesquisa)
+            ) {
+
+                outCadastro.textContent +=
+                    "Nome: " + vetProdutos[ind].nome +
+                    "\nTipo: " + vetProdutos[ind].tipo +
+                    "\nSabor: " + vetProdutos[ind].sabor +
+                    "\nPreço: R$ " + vetProdutos[ind].preco.toFixed(2) +
+                    "\nEstoque: " + vetProdutos[ind].estoque +
+                    "\n\n";
+
+                encontrou = true;
+            }
+        }
+
+        if (encontrou == false) {
+            outCadastro.textContent = "Produto não encontrado.";
+        }
+
+        limparCampos();
+    }
 }
 
 function excluirProduto() {
 
-    var nome = inNome.value;
-    var encontrou = false;
+    if (inNome.value == "" &&
+        sltTipo.value == "1" &&
+        sltSabor.value == "1" &&
+        inPreco.value == "" &&
+        inEstoque.value == "") {
 
-    for (var ind = 0; ind < vetProdutos.length; ind++) {
-
-        if (vetProdutos[ind].nome.toUpperCase() == nome.toUpperCase()) {
-
-            vetProdutos.splice(ind, 1);
-
-            encontrou = true;
-        }
-    }
-
-    if (encontrou == true) {
-
-        mostrarProdutos();
-
-        alert("Produto excluído!");
-
-        limparCampos();
+        alert("Informe algum dado para exclusão!");
 
     } else {
 
-        alert("Produto não encontrado!");
+        var pesquisa;
+
+        if (inNome.value != "") {
+            pesquisa = inNome.value;
+        }
+
+        if (sltTipo.value != "1") {
+            pesquisa = sltTipo.value;
+        }
+
+        if (sltSabor.value != "1") {
+            pesquisa = sltSabor.value;
+        }
+
+        if (inPreco.value != "") {
+            pesquisa = inPreco.value;
+        }
+
+        if (inEstoque.value != "") {
+            pesquisa = inEstoque.value;
+        }
+
+        var encontrou = false;
+
+        for (var ind = 0; ind < vetProdutos.length; ind++) {
+
+            if (
+                vetProdutos[ind].nome.toUpperCase() == pesquisa.toUpperCase() ||
+                vetProdutos[ind].tipo.toUpperCase() == pesquisa.toUpperCase() ||
+                vetProdutos[ind].sabor.toUpperCase() == pesquisa.toUpperCase() ||
+                vetProdutos[ind].preco == Number(pesquisa) ||
+                vetProdutos[ind].estoque == Number(pesquisa)
+            ) {
+
+                vetProdutos.splice(ind, 1);
+
+                encontrou = true;
+
+                ind--;
+            }
+        }
+
+        if (encontrou == true) {
+
+            alert("Produto(s) excluído(s)!");
+
+            mostrarProdutos();
+
+        } else {
+
+            alert("Produto não encontrado!");
+        }
+
+        limparCampos();
     }
 }
 
@@ -223,7 +308,7 @@ function filtrarDisponibilidade() {
                     status = "disponivel";
                 } else if (vetProdutos[ind].estoque >= 1 && vetProdutos[ind].estoque <= 10) {
                     status = "baixo";
-                } else if(vetProdutos[ind].estoque <=0){
+                } else if (vetProdutos[ind].estoque <= 0) {
                     status = "esgotado";
                 }
 
