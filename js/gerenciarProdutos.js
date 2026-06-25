@@ -125,11 +125,23 @@ function armazanarDados(produto) {
 
 function mostrarProdutos() {
 
+    pegarDados();
+
     if (vetProdutos.length == 0) {
         outCadastro.innerHTML = '<p class="mensagem-vazia">Nenhum produto cadastrado.</p>';
     } else {
         renderizarCardsProdutos(vetProdutos);
     }
+}
+
+mostrarProdutos();
+
+function pegarDados() {
+
+    const produtos = JSON.parse(localStorage.getItem("listaprodutos"));
+    console.log(produtos);
+
+    vetProdutos = produtos;
 }
 
 function consultarProduto() {
