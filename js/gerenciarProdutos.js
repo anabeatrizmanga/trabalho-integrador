@@ -46,29 +46,21 @@ const inNome = document.getElementById("inNome");
 const sltTipo = document.getElementById("sltTipo");
 const sltSabor = document.getElementById("sltSabor");
 const inPreco = document.getElementById("inPreco");
-const inEstoque = document.getElementById("inEstoque");
-
-const inFiltroNome = document.getElementById("inFiltroNome");
-const inFiltroTipo = document.getElementById("inFiltroTipo");
-const inFiltroSabor = document.getElementById("inFiltroSabor");
-const inFiltroPreco = document.getElementById("inFiltroPreco");
-const inFiltroEstoque = document.getElementById("inFiltroEstoque");
+const sltFaixaPreco = document.getElementById("sltFaixaPreco")
 
 const btCadastrar = document.getElementById("btCadastrar");
 const btMostrar = document.getElementById("btMostrar");
 const btConsultar = document.getElementById("btConsultar");
-const btExcluir = document.getElementById("btExcluir");
-const btFiltrar = document.getElementById("btFiltrar");
+const btConsultarFaixaPreco = document.getElementById("btConsultarFaixaPreco");
 const btEstoqueBaixo = document.getElementById("btEstoqueBaixo");
 
 const outCadastro = document.getElementById("outCadastro");
-const outFiltro = document.getElementById("outFiltro");
 
 btCadastrar.addEventListener("click", cadastrarProduto);
 btMostrar.addEventListener("click", mostrarProdutos);
 btConsultar.addEventListener("click", consultarProduto);
-btExcluir.addEventListener("click", excluirProduto);
-btFiltrar.addEventListener("click", filtrarDisponibilidade);
+btConsultarFaixaPreco.addEventListener("click", consultarFaixaPreco);
+
 
 function cadastrarProduto() {
 
@@ -207,73 +199,55 @@ function consultarProduto() {
     }
 }
 
-function excluirProduto() {
+function consultarFaixaPreco() {
 
-    if (inNome.value == "" &&
-        sltTipo.value == "1" &&
-        sltSabor.value == "1" &&
-        inPreco.value == "" &&
-        inEstoque.value == "") {
+    if (sltFaixaPreco.value == "1") {
 
-        alert("Informe algum dado para exclusão!");
+        alert("Selecione uma faixa de preço!");
+        sltFaixaPreco.focus();
 
     } else {
 
-        var pesquisa;
-
-        if (inNome.value != "") {
-            pesquisa = inNome.value;
-        }
-
-        if (sltTipo.value != "1") {
-            pesquisa = sltTipo.value;
-        }
-
-        if (sltSabor.value != "1") {
-            pesquisa = sltSabor.value;
-        }
-
-        if (inPreco.value != "") {
-            pesquisa = inPreco.value;
-        }
-
-        if (inEstoque.value != "") {
-            pesquisa = inEstoque.value;
-        }
+        var faixaSelecionada = sltFaixaPreco.value;
 
         var encontrou = false;
+
+        outCadastro.textContent = "";
 
         for (var ind = 0; ind < vetProdutos.length; ind++) {
 
             if (
-                vetProdutos[ind].nome.toUpperCase() == pesquisa.toUpperCase() ||
-                vetProdutos[ind].tipo.toUpperCase() == pesquisa.toUpperCase() ||
-                vetProdutos[ind].sabor.toUpperCase() == pesquisa.toUpperCase() ||
-                vetProdutos[ind].preco == Number(pesquisa) ||
-                vetProdutos[ind].estoque == Number(pesquisa)
+                faixaSelecionada == "todos" ||
+
+                (faixaSelecionada == "baixo" &&
+                    vetProdutos[ind].preco <= 10) ||
+
+                (faixaSelecionada == "medio" &&
+                    vetProdutos[ind].preco > 10 &&
+                    vetProdutos[ind].preco <= 20) ||
+
+                (faixaSelecionada == "alto" &&
+                    vetProdutos[ind].preco > 20)
             ) {
 
-                vetProdutos.splice(ind, 1);
+                outCadastro.textContent +=
+                    "Nome: " + vetProdutos[ind].nome +
+                    "\nTipo: " + vetProdutos[ind].tipo +
+                    "\nSabor: " + vetProdutos[ind].sabor +
+                    "\nPreço: R$ " + vetProdutos[ind].preco.toFixed(2) +
+                    "\nEstoque: " + vetProdutos[ind].estoque +
+                    "\n\n";
 
                 encontrou = true;
-
-                ind--;
             }
         }
 
-        if (encontrou == true) {
+        if (encontrou == false) {
 
-            alert("Produto(s) excluído(s)!");
-
-            mostrarProdutos();
-
-        } else {
-
-            alert("Produto não encontrado!");
+            outCadastro.textContent =
+                "Não há produtos nessa faixa de preço.";
         }
-
-        limparCampos();
-    }
+    } limparCampos();
 }
 
 function limparCampos() {
@@ -282,6 +256,7 @@ function limparCampos() {
     sltTipo.selectedIndex = 0;
     sltSabor.selectedIndex = 0;
     inPreco.value = "";
+    sltFaixaPreco.selectedIndex = 0;
     inEstoque.value = "";
 }
 
