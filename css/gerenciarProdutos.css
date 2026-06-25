@@ -151,6 +151,79 @@ footer {
     white-space: pre-wrap;
 }
 
+#outCadastro.lista-produtos {
+    display: grid;
+    gap: 15px;
+    white-space: normal;
+}
+
+.produto-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 15px;
+    align-items: center;
+    margin: 0;
+    padding: 16px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(255, 126, 179, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.produto-info,
+.produto-info h3,
+.produto-info p,
+.produto-acoes {
+    margin: 0;
+}
+
+.produto-info h3 {
+    color: var(--tituloNuvem);
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.produto-info p {
+    line-height: 1.5;
+}
+
+.produto-acoes {
+    display: grid;
+    gap: 8px;
+    min-width: 120px;
+}
+
+.produto-acoes button {
+    min-width: 110px;
+    width: 100%;
+    margin: 0;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+}
+
+.produto-acoes .bt-editar-produto {
+    background: var(--tituloNuvem);
+}
+
+.produto-acoes .bt-editar-produto:hover {
+    background: #37619d;
+}
+
+.produto-acoes .bt-excluir-produto {
+    background: #e65f8f;
+}
+
+.produto-acoes .bt-excluir-produto:hover {
+    background: #d94a7c;
+}
+
+.mensagem-vazia {
+    margin: 0;
+    text-align: center;
+    color: var(--texto);
+}
+
 .form-container-Cadastro {
     border-left: var(--rosa-hover);
 }
@@ -179,5 +252,18 @@ footer {
 
     button {
         width: 100%;
+    }
+
+    .produto-card {
+        grid-template-columns: 1fr;
+    }
+
+    .produto-acoes {
+        grid-template-columns: 1fr 1fr;
+        min-width: 0;
+    }
+
+    .produto-acoes button {
+        min-width: 0;
     }
 }

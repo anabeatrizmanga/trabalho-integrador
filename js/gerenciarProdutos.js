@@ -41,6 +41,7 @@ var vetDisponibilidade = [
 ];
 
 var vetProdutos = [];
+var indiceEdicao = -1;
 
 const inNome = document.getElementById("inNome");
 const sltTipo = document.getElementById("sltTipo");
@@ -69,6 +70,7 @@ btMostrar.addEventListener("click", mostrarProdutos);
 btConsultar.addEventListener("click", consultarProduto);
 btExcluir.addEventListener("click", excluirProduto);
 btFiltrar.addEventListener("click", filtrarDisponibilidade);
+outCadastro.addEventListener("click", gerenciarCliqueProduto);
 
 function cadastrarProduto() {
 
@@ -102,16 +104,20 @@ function cadastrarProduto() {
         alert("Campo estoque deve ser > 0 ou deixado vazio!");
         inEstoque.focus();
     } else {
-        vetProdutos.push(produto);
+        if (indiceEdicao == -1) {
+            vetProdutos.push(produto);
+            alert("Produto cadastrado!");
+        } else {
+            vetProdutos[indiceEdicao] = produto;
+            indiceEdicao = -1;
+            btCadastrar.textContent = "Cadastrar";
+            alert("Produto alterado!");
+        }
 
-        const jsonVetProdutos = JSON.stringify(vetProdutos);
-        console.log(jsonVetProdutos);
-
-        localStorage.setItem("listaprodutos", jsonVetProdutos);
-
-        alert("Produto cadastrado!");
+        salvarProdutosLocalStorage();
 
         limparCampos();
+        mostrarProdutos();
     }
 }
 
@@ -127,15 +133,10 @@ function armazanarDados(produto) {
 
 function mostrarProdutos() {
 
-    outCadastro.textContent = "";
-
-    for (var ind = 0; ind < vetProdutos.length; ind++) {
-
-        outCadastro.textContent += "Nome: " + vetProdutos[ind].nome +
-            "\nTipo: " + vetProdutos[ind].tipo +
-            "\nSabor: " + vetProdutos[ind].sabor +
-            "\nPreço: R$ " + vetProdutos[ind].preco.toFixed(2) +
-            "\nEstoque: " + vetProdutos[ind].estoque + "\n\n";
+    if (vetProdutos.length == 0) {
+        outCadastro.innerHTML = '<p class="mensagem-vazia">Nenhum produto cadastrado.</p>';
+    } else {
+        renderizarCardsProdutos(vetProdutos);
     }
 }
 
@@ -175,7 +176,8 @@ function consultarProduto() {
 
         var encontrou = false;
 
-        outCadastro.textContent = "";
+        var produtosEncontrados = [];
+        var indicesEncontrados = [];
 
         for (var ind = 0; ind < vetProdutos.length; ind++) {
 
@@ -187,23 +189,21 @@ function consultarProduto() {
                 vetProdutos[ind].estoque == Number(pesquisa)
             ) {
 
-                outCadastro.textContent +=
-                    "Nome: " + vetProdutos[ind].nome +
-                    "\nTipo: " + vetProdutos[ind].tipo +
-                    "\nSabor: " + vetProdutos[ind].sabor +
-                    "\nPreço: R$ " + vetProdutos[ind].preco.toFixed(2) +
-                    "\nEstoque: " + vetProdutos[ind].estoque +
-                    "\n\n";
+                produtosEncontrados.push(vetProdutos[ind]);
+                indicesEncontrados.push(ind);
 
                 encontrou = true;
             }
         }
 
         if (encontrou == false) {
-            outCadastro.textContent = "Produto não encontrado.";
+            outCadastro.innerHTML = '<p class="mensagem-vazia">Produto não encontrado.</p>';
+        } else {
+            renderizarCardsProdutos(produtosEncontrados, indicesEncontrados);
         }
 
         limparCampos();
+        cancelarEdicao();
     }
 }
 
@@ -264,6 +264,9 @@ function excluirProduto() {
         if (encontrou == true) {
 
             alert("Produto(s) excluído(s)!");
+            indiceEdicao = -1;
+            btCadastrar.textContent = "Cadastrar";
+            salvarProdutosLocalStorage();
 
             mostrarProdutos();
 
@@ -283,6 +286,125 @@ function limparCampos() {
     sltSabor.selectedIndex = 0;
     inPreco.value = "";
     inEstoque.value = "";
+}
+
+function cancelarEdicao() {
+
+    indiceEdicao = -1;
+    btCadastrar.textContent = "Cadastrar";
+}
+
+function salvarProdutosLocalStorage() {
+
+    const jsonVetProdutos = JSON.stringify(vetProdutos);
+    console.log(jsonVetProdutos);
+    localStorage.setItem("listaprodutos", jsonVetProdutos);
+}
+
+function renderizarCardsProdutos(produtos, indicesOriginais) {
+
+    outCadastro.innerHTML = "";
+
+    for (var ind = 0; ind < produtos.length; ind++) {
+
+        var indiceProduto = indicesOriginais ? indicesOriginais[ind] : ind;
+        var produto = produtos[ind];
+        var artigo = document.createElement("article");
+        var info = document.createElement("div");
+        var titulo = document.createElement("h3");
+        var tipo = document.createElement("p");
+        var sabor = document.createElement("p");
+        var preco = document.createElement("p");
+        var estoque = document.createElement("p");
+        var acoes = document.createElement("div");
+        var btEditarProduto = document.createElement("button");
+        var btExcluirProduto = document.createElement("button");
+
+        artigo.className = "produto-card";
+        info.className = "produto-info";
+        acoes.className = "produto-acoes";
+
+        titulo.textContent = produto.nome;
+        tipo.innerHTML = "<strong>Tipo:</strong> ";
+        sabor.innerHTML = "<strong>Sabor:</strong> ";
+        preco.innerHTML = "<strong>Preço:</strong> ";
+        estoque.innerHTML = "<strong>Estoque:</strong> ";
+
+        tipo.appendChild(document.createTextNode(produto.tipo));
+        sabor.appendChild(document.createTextNode(produto.sabor));
+        preco.appendChild(document.createTextNode("R$ " + produto.preco.toFixed(2)));
+        estoque.appendChild(document.createTextNode(produto.estoque));
+
+        btEditarProduto.type = "button";
+        btEditarProduto.className = "bt-editar-produto";
+        btEditarProduto.dataset.indice = indiceProduto;
+        btEditarProduto.textContent = "Editar";
+
+        btExcluirProduto.type = "button";
+        btExcluirProduto.className = "bt-excluir-produto";
+        btExcluirProduto.dataset.indice = indiceProduto;
+        btExcluirProduto.textContent = "Excluir";
+
+        info.appendChild(titulo);
+        info.appendChild(tipo);
+        info.appendChild(sabor);
+        info.appendChild(preco);
+        info.appendChild(estoque);
+        acoes.appendChild(btEditarProduto);
+        acoes.appendChild(btExcluirProduto);
+        artigo.appendChild(info);
+        artigo.appendChild(acoes);
+
+        outCadastro.appendChild(artigo);
+    }
+}
+
+function gerenciarCliqueProduto(evento) {
+
+    var botao = evento.target;
+
+    if (botao.classList.contains("bt-editar-produto")) {
+        editarProduto(Number(botao.dataset.indice));
+    }
+
+    if (botao.classList.contains("bt-excluir-produto")) {
+        excluirProdutoPorIndice(Number(botao.dataset.indice));
+    }
+}
+
+function editarProduto(indice) {
+
+    var produto = vetProdutos[indice];
+
+    inNome.value = produto.nome;
+    sltTipo.value = produto.tipo;
+    sltSabor.value = produto.sabor;
+    inPreco.value = produto.preco;
+    inEstoque.value = produto.estoque;
+    indiceEdicao = indice;
+    btCadastrar.textContent = "Salvar Alteração";
+    inNome.focus();
+}
+
+function excluirProdutoPorIndice(indice) {
+
+    var confirmou = confirm("Deseja excluir este produto?");
+
+    if (confirmou == true) {
+        vetProdutos.splice(indice, 1);
+
+        if (indiceEdicao == indice) {
+            indiceEdicao = -1;
+            btCadastrar.textContent = "Cadastrar";
+            limparCampos();
+        } else if (indiceEdicao > indice) {
+            indiceEdicao--;
+        }
+
+        salvarProdutosLocalStorage();
+        alert("Produto excluído!");
+        mostrarProdutos();
+    }
 }
 
 function filtrarDisponibilidade() {
