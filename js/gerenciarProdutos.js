@@ -58,7 +58,6 @@ const inFiltroEstoque = document.getElementById("inFiltroEstoque");
 const btCadastrar = document.getElementById("btCadastrar");
 const btMostrar = document.getElementById("btMostrar");
 const btConsultar = document.getElementById("btConsultar");
-const btExcluir = document.getElementById("btExcluir");
 const btFiltrar = document.getElementById("btFiltrar");
 const btEstoqueBaixo = document.getElementById("btEstoqueBaixo");
 
@@ -68,8 +67,9 @@ const outFiltro = document.getElementById("outFiltro");
 btCadastrar.addEventListener("click", cadastrarProduto);
 btMostrar.addEventListener("click", mostrarProdutos);
 btConsultar.addEventListener("click", consultarProduto);
-btExcluir.addEventListener("click", excluirProduto);
-btFiltrar.addEventListener("click", filtrarDisponibilidade);
+if (btFiltrar) {
+    btFiltrar.addEventListener("click", filtrarDisponibilidade);
+}
 outCadastro.addEventListener("click", gerenciarCliqueProduto);
 
 function cadastrarProduto() {
@@ -204,78 +204,6 @@ function consultarProduto() {
 
         limparCampos();
         cancelarEdicao();
-    }
-}
-
-function excluirProduto() {
-
-    if (inNome.value == "" &&
-        sltTipo.value == "1" &&
-        sltSabor.value == "1" &&
-        inPreco.value == "" &&
-        inEstoque.value == "") {
-
-        alert("Informe algum dado para exclusão!");
-
-    } else {
-
-        var pesquisa;
-
-        if (inNome.value != "") {
-            pesquisa = inNome.value;
-        }
-
-        if (sltTipo.value != "1") {
-            pesquisa = sltTipo.value;
-        }
-
-        if (sltSabor.value != "1") {
-            pesquisa = sltSabor.value;
-        }
-
-        if (inPreco.value != "") {
-            pesquisa = inPreco.value;
-        }
-
-        if (inEstoque.value != "") {
-            pesquisa = inEstoque.value;
-        }
-
-        var encontrou = false;
-
-        for (var ind = 0; ind < vetProdutos.length; ind++) {
-
-            if (
-                vetProdutos[ind].nome.toUpperCase() == pesquisa.toUpperCase() ||
-                vetProdutos[ind].tipo.toUpperCase() == pesquisa.toUpperCase() ||
-                vetProdutos[ind].sabor.toUpperCase() == pesquisa.toUpperCase() ||
-                vetProdutos[ind].preco == Number(pesquisa) ||
-                vetProdutos[ind].estoque == Number(pesquisa)
-            ) {
-
-                vetProdutos.splice(ind, 1);
-
-                encontrou = true;
-
-                ind--;
-            }
-        }
-
-        if (encontrou == true) {
-
-            alert("Produto(s) excluído(s)!");
-            indiceEdicao = -1;
-            btCadastrar.textContent = "Cadastrar";
-            salvarProdutosLocalStorage();
-
-            mostrarProdutos();
-
-        } else {
-
-            alert("Produto não encontrado!");
-        }
-
-        limparCampos();
     }
 }
 
@@ -467,7 +395,9 @@ function filtrarDisponibilidade() {
     }
 }
 
-btEstoqueBaixo.addEventListener("click", exibirEstoqueBaixo);
+if (btEstoqueBaixo) {
+    btEstoqueBaixo.addEventListener("click", exibirEstoqueBaixo);
+}
 
 function exibirEstoqueBaixo() {
     outFiltro.textContent = "";
