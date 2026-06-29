@@ -1,45 +1,3 @@
-var vetTipos = [
-    "Sorvete",
-    "Açaí",
-    "Milkshake",
-    "Especial da Casa"
-];
-
-var vetSabores = [
-    "Nuvem de Chocolate",
-    "Nuvem de Baunilha",
-    "Nuvem de Morango",
-    "Flocos Celestiais",
-    "Coco Cremoso",
-    "Maracujá Tropical",
-    "Manga Doce",
-    "Uva",
-    "Limão",
-    "Abacaxi",
-    "Leite Condensado",
-    "Ninho com Chocolate",
-    "Morango Cremoso",
-    "Doce de Leite",
-    "Coco",
-    "Banana",
-    "Chocolate Supremo",
-    "Baunilha Clássico",
-    "Ovomaltine",
-    "Cookies & Cream"
-];
-
-var vetFaixaPreco = [
-    "Até R$ 10,00",
-    "R$ 10,01 até R$ 20,00",
-    "Acima de R$ 20,00"
-];
-
-var vetDisponibilidade = [
-    "Disponível",
-    "Estoque Baixo",
-    "Esgotado"
-];
-
 var vetProdutos = [];
 var indiceEdicao = -1;
 
@@ -55,7 +13,6 @@ const btCadastrar = document.getElementById("btCadastrar");
 const btMostrar = document.getElementById("btMostrar");
 const btConsultar = document.getElementById("btConsultar");
 const btConsultarFaixaPreco = document.getElementById("btConsultarFaixaPreco");
-const btEstoqueBaixo = document.getElementById("btEstoqueBaixo");
 
 const outCadastro = document.getElementById("outCadastro");
 
