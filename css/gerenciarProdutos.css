@@ -211,11 +211,11 @@ footer {
 }
 
 .produto-acoes .bt-excluir-produto {
-    background: #e65f8f;
+    background: #c62828;
 }
 
 .produto-acoes .bt-excluir-produto:hover {
-    background: #d94a7c;
+    background: #a61b1b;
 }
 
 .mensagem-vazia {

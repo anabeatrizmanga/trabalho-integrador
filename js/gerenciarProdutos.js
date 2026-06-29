@@ -48,7 +48,9 @@ const sltTipo = document.getElementById("sltTipo");
 const sltSabor = document.getElementById("sltSabor");
 const inPreco = document.getElementById("inPreco");
 const inEstoque = document.getElementById("inEstoque");
-const sltFaixaPreco = document.getElementById("sltFaixaPreco")
+const inBuscaProduto = document.getElementById("inBuscaProduto");
+const sltFaixaPreco = document.getElementById("sltFaixaPreco");
+const grupoFaixaPreco = document.getElementById("grupoFaixaPreco");
 
 const btCadastrar = document.getElementById("btCadastrar");
 const btMostrar = document.getElementById("btMostrar");
@@ -109,7 +111,7 @@ function cadastrarProduto() {
         salvarProdutosLocalStorage();
 
         limparCampos();
-        mostrarProdutos();
+        outCadastro.innerHTML = "";
     }
 }
 
@@ -134,64 +136,33 @@ function mostrarProdutos() {
     }
 }
 
-mostrarProdutos();
+pegarDados();
 
 function pegarDados() {
 
     const produtos = JSON.parse(localStorage.getItem("listaprodutos"));
     console.log(produtos);
 
-    vetProdutos = produtos;
+    vetProdutos = produtos || [];
 }
 
 function consultarProduto() {
 
-    if (inNome.value == "" &&
-        sltTipo.value == "1" &&
-        sltSabor.value == "1" &&
-        inPreco.value == "" &&
-        inEstoque.value == "") {
+    grupoFaixaPreco.hidden = false;
+    btConsultarFaixaPreco.hidden = false;
 
-        alert("Informe algum dado para consulta!");
+    var pesquisa = inBuscaProduto.value.trim().toUpperCase();
 
+    if (pesquisa == "") {
+        sltFaixaPreco.focus();
     } else {
-
-        var pesquisa;
-
-        if (inNome.value != "") {
-            pesquisa = inNome.value;
-        }
-
-        if (sltTipo.value != "1") {
-            pesquisa = sltTipo.value;
-        }
-
-        if (sltSabor.value != "1") {
-            pesquisa = sltSabor.value;
-        }
-
-        if (inPreco.value != "") {
-            pesquisa = inPreco.value;
-        }
-
-        if (inEstoque.value != "") {
-            pesquisa = inEstoque.value;
-        }
-
         var encontrou = false;
-
         var produtosEncontrados = [];
         var indicesEncontrados = [];
 
         for (var ind = 0; ind < vetProdutos.length; ind++) {
 
-            if (
-                vetProdutos[ind].nome.toUpperCase() == pesquisa.toUpperCase() ||
-                vetProdutos[ind].tipo.toUpperCase() == pesquisa.toUpperCase() ||
-                vetProdutos[ind].sabor.toUpperCase() == pesquisa.toUpperCase() ||
-                vetProdutos[ind].preco == Number(pesquisa) ||
-                vetProdutos[ind].estoque == Number(pesquisa)
-            ) {
+            if (vetProdutos[ind].nome.toUpperCase().includes(pesquisa)) {
 
                 produtosEncontrados.push(vetProdutos[ind]);
                 indicesEncontrados.push(ind);
@@ -271,6 +242,7 @@ function limparCampos() {
     inPreco.value = "";
     sltFaixaPreco.selectedIndex = 0;
     inEstoque.value = "";
+    inBuscaProduto.value = "";
 }
 
 function cancelarEdicao() {
@@ -330,10 +302,15 @@ function renderizarCardsProdutos(produtos, indicesOriginais) {
         btExcluirProduto.dataset.indice = indiceProduto;
         btExcluirProduto.textContent = "Excluir";
 
+        // Adiciona o título do produto na área de informações.
         info.appendChild(titulo);
+        // Adiciona o tipo do produto na área de informações.
         info.appendChild(tipo);
+        // Adiciona o sabor do produto na área de informações.
         info.appendChild(sabor);
+        // Adiciona o preço do produto na área de informações.
         info.appendChild(preco);
+        // Adiciona o estoque do produto na área de informações.
         info.appendChild(estoque);
         acoes.appendChild(btEditarProduto);
         acoes.appendChild(btExcluirProduto);
