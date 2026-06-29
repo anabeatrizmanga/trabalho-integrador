@@ -118,7 +118,7 @@ button {
     padding: 15px;
     border: none;
     border-radius: 20px;
-    background: #ff9ecb;
+    background: #8fd3ff;
     color: white;
     font-size: 1rem;
     cursor: pointer;
@@ -126,7 +126,7 @@ button {
 }
 
 button:hover {
-    background: #ff7eb3;
+    background: #69c2ff;
     transform: scale(1.02);
 }
 

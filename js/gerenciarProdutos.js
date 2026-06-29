@@ -50,6 +50,7 @@ const inPreco = document.getElementById("inPreco");
 const inEstoque = document.getElementById("inEstoque");
 const inBuscaProduto = document.getElementById("inBuscaProduto");
 const sltFaixaPreco = document.getElementById("sltFaixaPreco");
+const grupoBuscaProduto = document.getElementById("grupoBuscaProduto");
 const grupoFaixaPreco = document.getElementById("grupoFaixaPreco");
 
 const btCadastrar = document.getElementById("btCadastrar");
@@ -148,13 +149,19 @@ function pegarDados() {
 
 function consultarProduto() {
 
-    grupoFaixaPreco.hidden = false;
-    btConsultarFaixaPreco.hidden = false;
+    var areaConsultaEstavaOculta = grupoBuscaProduto.hidden;
+
+    exibirBuscaProduto();
+
+    if (areaConsultaEstavaOculta == true) {
+        inBuscaProduto.focus();
+        return;
+    }
 
     var pesquisa = inBuscaProduto.value.trim().toUpperCase();
 
     if (pesquisa == "") {
-        sltFaixaPreco.focus();
+        inBuscaProduto.focus();
     } else {
         var encontrou = false;
         var produtosEncontrados = [];
@@ -182,7 +189,26 @@ function consultarProduto() {
     }
 }
 
+function exibirBuscaProduto() {
+
+    grupoBuscaProduto.hidden = false;
+}
+
+function exibirFiltroFaixaPreco() {
+
+    grupoFaixaPreco.hidden = false;
+}
+
 function consultarFaixaPreco() {
+
+    var filtroFaixaEstavaOculto = grupoFaixaPreco.hidden;
+
+    exibirFiltroFaixaPreco();
+
+    if (filtroFaixaEstavaOculto == true) {
+        sltFaixaPreco.focus();
+        return;
+    }
 
     if (sltFaixaPreco.value == "1") {
 
