@@ -1,70 +1,146 @@
-let vetPedidos = [];
+const inNome = document.getElementById("inNome");
+const tipoDeProduto = document.getElementById("tipoDeProduto");
+const tipoDeEspeciaisDaCasa = document.getElementById("tipoDeEspeciaisDaCasa");
+const sabor = document.getElementById("sabor");
+const endereco = document.getElementById("endereco");
+const observacoes = document.getElementById("Observarcoes");
+const divEspecial = document.getElementById("divEspecial");
 
 const btPedido = document.getElementById("btPedido");
 
-btPedido.addEventListener("click", fazerPedido);
+let pedidos = [];
 
 carregarPedidos();
 
-function fazerPedido() {
+btPedido.addEventListener("click", fazerPedido);
 
-    const nome = document.getElementById("inNome").value;
-    const tipo = document.getElementById("tipoDeProduto").value;
-    const especial = document.getElementById("tipoDeEspeciaisDaCasa").value;
-    const sabor = document.getElementById("sabor").value;
-    const endereco = document.getElementById("endereco").value;
-    const observacoes = document.getElementById("Observarções").value;
+function fazerPedido() {
 
     let tamanho = "";
 
-    const tamanhos = document.getElementsByName("tamanho");
+    let vetTamanho = document.getElementsByName("tamanho");
 
-    for (let i = 0; i < tamanhos.length; i++) {
-        if (tamanhos[i].checked) {
-            tamanho = tamanhos[i].value;
+    for (let ind = 0; ind < vetTamanho.length; ind++) {
+
+        if (vetTamanho[ind].checked == true) {
+            tamanho = vetTamanho[ind].value;
         }
+
     }
 
-    let complementos = [];
+    let complementos = "";
 
-    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+    if (document.getElementById("granulado").checked == true) {
+        complementos += "Granulado ";
+    }
+    if (document.getElementById("leiteCondensado").checked == true) {
+        complementos += "Leite Condensado ";
+    }
+    if (document.getElementById("nutella").checked == true) {
+        complementos += "Nutella ";
+    }
+    if (document.getElementById("caldaDeChocolate").checked == true) {
+        complementos += "Calda de Chocolate ";
+    }
+    if (document.getElementById("leiteEmPo").checked == true) {
+        complementos += "Leite em Pó ";
+    }
+    if (document.getElementById("banana").checked == true) {
+        complementos += "Banana ";
+    }
+    if (document.getElementById("pacoca").checked == true) {
+        complementos += "Paçoca ";
+    }
+    if (document.getElementById("confetes").checked == true) {
+        complementos += "Confetes ";
+    }
+    if (inNome.value == "") {
 
-    checkboxes.forEach(function (item) {
-        if (item.checked) {
-            complementos.push(item.value);
-        }
-    });
+        alert("Informe seu nome.");
 
-    const pedido = {
-        nome,
-        tipo,
-        especial,
-        sabor,
-        tamanho,
-        complementos,
-        endereco,
-        observacoes
-    };
+    } else if (tipoDeProduto.value == "") {
 
-    vetPedidos.push(pedido);
+        alert("Selecione um tipo de produto.");
 
-    localStorage.setItem("listaPedidos", JSON.stringify(vetPedidos));
+    } else if (sabor.value == "") {
 
-    console.log("Pedido salvo:");
-    console.log(pedido);
+        alert("Selecione um sabor.");
 
-    console.log("Local Storage:");
-    console.log(JSON.parse(localStorage.getItem("listaPedidos")));
+    } else if (tamanho == "") {
+
+        alert("Selecione um tamanho.");
+
+    } else if (endereco.value == "") {
+
+        alert("Informe o endereço.");
+
+    } else if (observacoes.value == "") {
+
+        alert("Informe as observações.");
+
+    } else {
+
+        let pedido = {
+
+            nome: inNome.value,
+            tipo: tipoDeProduto.value,
+            especial: tipoDeEspeciaisDaCasa.value,
+            sabor: sabor.value,
+            tamanho: tamanho,
+            complementos: complementos,
+            endereco: endereco.value,
+            observacoes: observacoes.value
+
+        };
+
+        pedidos.push(pedido);
+
+        salvarPedidos();
+
+        console.log("Pedido cadastrado:");
+        console.log(pedido);
+
+        console.log("Todos os pedidos:");
+        console.log(pedidos);
+
+        alert("Pedido realizado com sucesso!");
+
+    }
+
+}
+
+tipoDeProduto.addEventListener("change", mostrarEspecial);
+function mostrarEspecial() {
+
+    if (tipoDeProduto.value == "especiaisDaCasa") {
+
+        divEspecial.removeAttribute("hidden");
+
+    } else {
+
+        divEspecial.setAttribute("hidden", true);
+
+    }
+
+}
+function salvarPedidos() {
+
+    let jsonPedidos = JSON.stringify(pedidos);
+
+    localStorage.setItem("listaPedidos", jsonPedidos);
+
 }
 
 function carregarPedidos() {
 
-    const dados = localStorage.getItem("listaPedidos");
+    let jsonPedidos = localStorage.getItem("listaPedidos");
 
-    if (dados != null) {
-        vetPedidos = JSON.parse(dados);
+    if (jsonPedidos != null) {
+
+        pedidos = JSON.parse(jsonPedidos);
+
     }
 
-    console.log("Pedidos carregados:");
-    console.log(vetPedidos);
+    console.log(pedidos);
+
 }
