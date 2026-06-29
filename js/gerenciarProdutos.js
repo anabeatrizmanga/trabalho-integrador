@@ -139,6 +139,11 @@ function exibirFiltroFaixaPreco() {
     grupoFaixaPreco.hidden = false;
 }
 
+function esconderFiltroFaixaPreco() {
+
+    grupoFaixaPreco.hidden = true;
+}
+
 function consultarFaixaPreco() {
 
     var filtroFaixaEstavaOculto = grupoFaixaPreco.hidden;
@@ -147,53 +152,54 @@ function consultarFaixaPreco() {
 
     if (filtroFaixaEstavaOculto == true) {
         sltFaixaPreco.focus();
-        return;
-    }
-
-    var faixaSelecionada = sltFaixaPreco.value;
-
-    if (faixaSelecionada == "1") {
-        faixaSelecionada = "todos";
-    }
-
-    var encontrou = false;
-    var produtosEncontrados = [];
-    var indicesEncontrados = [];
-
-    outCadastro.innerHTML = "";
-
-    for (var ind = 0; ind < vetProdutos.length; ind++) {
-
-        if (
-            faixaSelecionada == "todos" ||
-
-            (faixaSelecionada == "baixo" &&
-                vetProdutos[ind].preco <= 10) ||
-
-            (faixaSelecionada == "medio" &&
-                vetProdutos[ind].preco > 10 &&
-                vetProdutos[ind].preco <= 20) ||
-
-            (faixaSelecionada == "alto" &&
-                vetProdutos[ind].preco > 20)
-        ) {
-
-            produtosEncontrados.push(vetProdutos[ind]);
-            indicesEncontrados.push(ind);
-
-            encontrou = true;
-        }
-    }
-
-    if (encontrou == false) {
-
-        outCadastro.innerHTML = '<p class="mensagem-vazia">Não há produtos nessa faixa de preço.</p>';
     } else {
-        renderizarCardsProdutos(produtosEncontrados, indicesEncontrados);
-    }
 
-    limparCampos();
-    cancelarEdicao();
+        var faixaSelecionada = sltFaixaPreco.value;
+
+        if (faixaSelecionada == "1") {
+            faixaSelecionada = "todos";
+        }
+
+        var encontrou = false;
+        var produtosEncontrados = [];
+        var indicesEncontrados = [];
+
+        outCadastro.innerHTML = "";
+
+        for (var ind = 0; ind < vetProdutos.length; ind++) {
+
+            if (
+                faixaSelecionada == "todos" ||
+
+                (faixaSelecionada == "baixo" &&
+                    vetProdutos[ind].preco <= 10) ||
+
+                (faixaSelecionada == "medio" &&
+                    vetProdutos[ind].preco > 10 &&
+                    vetProdutos[ind].preco <= 20) ||
+
+                (faixaSelecionada == "alto" &&
+                    vetProdutos[ind].preco > 20)
+            ) {
+
+                produtosEncontrados.push(vetProdutos[ind]);
+                indicesEncontrados.push(ind);
+
+                encontrou = true;
+            }
+        }
+
+        if (encontrou == false) {
+
+            outCadastro.innerHTML = '<p class="mensagem-vazia">Não há produtos nessa faixa de preço.</p>';
+        } else {
+            renderizarCardsProdutos(produtosEncontrados, indicesEncontrados);
+        }
+
+        limparCampos();
+        esconderFiltroFaixaPreco();
+        cancelarEdicao();
+    }
 }
 
 function limparCampos() {
