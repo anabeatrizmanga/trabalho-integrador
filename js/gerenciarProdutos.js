@@ -1,3 +1,4 @@
+// Referências dos campos do formulário.
 const inNome = document.getElementById("inNome");
 const sltTipo = document.getElementById("sltTipo");
 const sltSabor = document.getElementById("sltSabor");
@@ -6,19 +7,23 @@ const inEstoque = document.getElementById("inEstoque");
 const sltFaixaPreco = document.getElementById("sltFaixaPreco");
 const grupoFaixaPreco = document.getElementById("grupoFaixaPreco");
 
+// Referências dos botões de ação.
 const btCadastrar = document.getElementById("btCadastrar");
 const btMostrar = document.getElementById("btMostrar");
 const btConsultar = document.getElementById("btConsultar");
 const btConsultarFaixaPreco = document.getElementById("btConsultarFaixaPreco");
 
+// Área onde os cards são renderizados.
 const outCadastro = document.getElementById("outCadastro");
 
+// Liga cada botão à sua respectiva função.
 btCadastrar.addEventListener("click", cadastrarProduto);
 btMostrar.addEventListener("click", mostrarProdutos);
 btConsultar.addEventListener("click", consultarProduto);
 btConsultarFaixaPreco.addEventListener("click", consultarFaixaPreco);
 outCadastro.addEventListener("click", gerenciarCliqueProduto);
 
+// Vetor principal dos produtos e controle de edição.
 var vetProdutos = [];
 var indiceEdicao = -1;
 
@@ -82,6 +87,7 @@ function armazanarDados(produto) {
 
 function mostrarProdutos() {
 
+    // Recarrega os dados antes de mostrar, para garantir sincronização com o localStorage.
     pegarDados();
 
     if (vetProdutos.length == 0) {
@@ -95,6 +101,7 @@ pegarDados();
 
 function pegarDados() {
 
+    // Se não houver dados salvos, o vetor recebe um array vazio.
     const produtos = JSON.parse(localStorage.getItem("listaprodutos"));
     console.log(produtos);
 
@@ -103,6 +110,7 @@ function pegarDados() {
 
 function consultarProduto() {
 
+    // A consulta usa o próprio campo "Nome do Sorvete".
     var pesquisa = inNome.value.trim().toUpperCase();
 
     if (pesquisa == "") {
@@ -146,6 +154,7 @@ function esconderFiltroFaixaPreco() {
 
 function consultarFaixaPreco() {
 
+    // No primeiro clique, apenas exibe o select da faixa.
     var filtroFaixaEstavaOculto = grupoFaixaPreco.hidden;
 
     exibirFiltroFaixaPreco();
@@ -154,6 +163,7 @@ function consultarFaixaPreco() {
         sltFaixaPreco.focus();
     } else {
 
+        // Se nada for escolhido, considera "todos".
         var faixaSelecionada = sltFaixaPreco.value;
 
         if (faixaSelecionada == "1") {
@@ -204,6 +214,7 @@ function consultarFaixaPreco() {
 
 function limparCampos() {
 
+    // Restaura o formulário para o estado inicial.
     inNome.value = "";
     sltTipo.selectedIndex = 0;
     sltSabor.selectedIndex = 0;
@@ -214,12 +225,14 @@ function limparCampos() {
 
 function cancelarEdicao() {
 
+    // Sai do modo de edição e devolve o texto padrão do botão.
     indiceEdicao = -1;
     btCadastrar.textContent = "Cadastrar";
 }
 
 function salvarProdutosLocalStorage() {
 
+    // Converte o vetor em texto JSON para salvar no navegador.
     const jsonVetProdutos = JSON.stringify(vetProdutos);
     console.log(jsonVetProdutos);
     localStorage.setItem("listaprodutos", jsonVetProdutos);
@@ -227,12 +240,24 @@ function salvarProdutosLocalStorage() {
 
 function renderizarCardsProdutos(produtos, indicesOriginais) {
 
+    // "produtos" é a lista que será mostrada na tela.
+    // "indicesOriginais" guarda a posição real desses produtos no vetor vetProdutos.
+    // Isso é importante quando a lista veio de uma busca ou filtro.
+
+    // Limpa a área antes de desenhar a lista atual.
     outCadastro.innerHTML = "";
 
     for (var ind = 0; ind < produtos.length; ind++) {
 
+        // Se a lista veio filtrada, usa o índice original do produto.
+        // Se veio da listagem completa, usa o próprio índice do laço.
         var indiceProduto = indicesOriginais ? indicesOriginais[ind] : ind;
+
+        // Pega o produto atual que será transformado em card.
         var produto = produtos[ind];
+
+        // Cria cada elemento HTML do card ainda solto, fora da página.
+        // Nesse momento eles existem só no JavaScript, ainda não apareceram no HTML.
         var artigo = document.createElement("article");
         var info = document.createElement("div");
         var titulo = document.createElement("h3");
@@ -244,21 +269,26 @@ function renderizarCardsProdutos(produtos, indicesOriginais) {
         var btEditarProduto = document.createElement("button");
         var btExcluirProduto = document.createElement("button");
 
+        // Define as classes usadas pelo CSS para estilizar o card.
         artigo.className = "produto-card";
         info.className = "produto-info";
         acoes.className = "produto-acoes";
 
+        // Preenche os elementos com os dados do produto atual.
         titulo.textContent = produto.nome;
         tipo.innerHTML = "<strong>Tipo:</strong> ";
         sabor.innerHTML = "<strong>Sabor:</strong> ";
         preco.innerHTML = "<strong>Preço:</strong> ";
         estoque.innerHTML = "<strong>Estoque:</strong> ";
 
+        // Acrescenta o valor de cada informação após o rótulo.
         tipo.appendChild(document.createTextNode(produto.tipo));
         sabor.appendChild(document.createTextNode(produto.sabor));
         preco.appendChild(document.createTextNode("R$ " + produto.preco.toFixed(2)));
         estoque.appendChild(document.createTextNode(produto.estoque));
 
+        // Configura os botões e salva neles o índice real do produto.
+        // Esse índice será usado depois nas ações de editar e excluir.
         btEditarProduto.type = "button";
         btEditarProduto.className = "bt-editar-produto";
         btEditarProduto.dataset.indice = indiceProduto;
@@ -269,27 +299,33 @@ function renderizarCardsProdutos(produtos, indicesOriginais) {
         btExcluirProduto.dataset.indice = indiceProduto;
         btExcluirProduto.textContent = "Excluir";
 
-        // Adiciona o título do produto na área de informações.
+        // Monta o bloco de informações do card.
+        // Aqui, cada appendChild coloca um elemento dentro da div "info".
         info.appendChild(titulo);
-        // Adiciona o tipo do produto na área de informações.
         info.appendChild(tipo);
-        // Adiciona o sabor do produto na área de informações.
         info.appendChild(sabor);
-        // Adiciona o preço do produto na área de informações.
         info.appendChild(preco);
-        // Adiciona o estoque do produto na área de informações.
         info.appendChild(estoque);
+
+        // Monta o bloco de ações com os botões editar/excluir.
+        // Os dois botões passam a ficar dentro da div "acoes".
         acoes.appendChild(btEditarProduto);
         acoes.appendChild(btExcluirProduto);
+
+        // Junta os dois blocos principais dentro do <article>.
+        // O "artigo" vira o card completo do produto.
         artigo.appendChild(info);
         artigo.appendChild(acoes);
 
+        // Por fim, coloca o card pronto dentro da área principal da tela.
+        // É aqui que o produto realmente aparece para o usuário.
         outCadastro.appendChild(artigo);
     }
 }
 
 function gerenciarCliqueProduto(evento) {
 
+    // Descobre qual botão dentro do card foi clicado.
     var botao = evento.target;
 
     if (botao.classList.contains("bt-editar-produto")) {
@@ -303,6 +339,7 @@ function gerenciarCliqueProduto(evento) {
 
 function editarProduto(indice) {
 
+    // Preenche o formulário com os dados do item escolhido.
     var produto = vetProdutos[indice];
 
     inNome.value = produto.nome;
