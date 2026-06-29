@@ -1,6 +1,3 @@
-var vetProdutos = [];
-var indiceEdicao = -1;
-
 const inNome = document.getElementById("inNome");
 const sltTipo = document.getElementById("sltTipo");
 const sltSabor = document.getElementById("sltSabor");
@@ -21,6 +18,9 @@ btMostrar.addEventListener("click", mostrarProdutos);
 btConsultar.addEventListener("click", consultarProduto);
 btConsultarFaixaPreco.addEventListener("click", consultarFaixaPreco);
 outCadastro.addEventListener("click", gerenciarCliqueProduto);
+
+var vetProdutos = [];
+var indiceEdicao = -1;
 
 function cadastrarProduto() {
 
