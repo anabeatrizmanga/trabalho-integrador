@@ -18,10 +18,11 @@
 
   <nav>
     <ul>
-      <a href="./index.html">Home</a>
-      <a href="./sobre.html">Sobre</a>
-      <a href="./contato.html">Contato</a>
-      <a href="cardapio.html">Cardápio</a>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./sobre.html">Sobre</a></li>
+      <li><a href="./contato.html">Contato</a></li>
+      <li><a href="cardapio.html">Cardápio</a></li>
+      <li><a class="gerenciarProdutos" href="./gerenciarProdutos.html">🔑 Gerenciar Produtos</a></li>
     </ul>
   </nav>
 
@@ -47,7 +48,7 @@
 
     <!--Tipos de Especiais da casa-->
     <label for="especiaisDaCasa">Selecione o especial da casa:</label><br>
-    <select id="tipoDeEspeciaisDaCasa" required>
+    <select id="tipoDeEspeciaisDaCasa">
       <option value="" selected disabled>Selecione o Especial da Casa</option>
       <option value="sorvete">Copo Nuvem (3 bolas + cobertura)</option>
       <option value="chupchup">Sundae dos Céus</option>
@@ -90,38 +91,46 @@
     <input type="radio" name="tamanho" value="grande"> Grande<br><br>
 
     <!-- Complementos -->
-    <label for="complementos">Complementos:</label><br>
-    <input type="checkbox" value="granulado">Granulado<br>
-    <input type="checkbox" value="leiteCondensado">Leite Condensado<br>
-    <input type="checkbox" value="nutella">Nutella<br>
-    <input type="checkbox" value="caldaDeChocolate">Calda de Chocolate<br>
-    <input type="checkbox" value="leiteEmPo">Leite em Pó<br>
-    <input type="checkbox" value="banana">Banana<br>
-    <input type="checkbox" value="pacoca">Paçoca<br>
-    <input type="checkbox" value="confetes">Confetes<br><br>
+<label for="complementos">Complementos:</label><br>
+<input type="checkbox" id="granulado" value="granulado">Granulado<br>
+<input type="checkbox" id="leiteCondensado" value="leiteCondensado">Leite Condensado<br>
+<input type="checkbox" id="nutella" value="nutella">Nutella<br>
+<input type="checkbox" id="caldaDeChocolate" value="caldaDeChocolate">Calda de Chocolate<br>
+<input type="checkbox" id="leiteEmPo" value="leiteEmPo">Leite em Pó<br>
+<input type="checkbox" id="banana" value="banana">Banana<br>
+<input type="checkbox" id="pacoca" value="pacoca">Paçoca<br>
+<input type="checkbox" id="confetes" value="confetes">Confetes<br><br>
 
-    <!-- Endereço de Entrega -->
-    <label for="endereco">Endereço de Entrega:</label><br>
-    <input type="text" id="endereco" placeholder="Digite seu endereço completo, incluindo número e complemento" required
-      oninvalid="this.setCustomValidity('Informe seu endereço')" oninput="this.setCustomValidity('')"><br><br>
+<!-- Endereço de Entrega -->
+<label for="endereco">Endereço de Entrega:</label><br>
+<input type="text" id="endereco" placeholder="Digite seu endereço completo, incluindo número e complemento" required
+    oninvalid="this.setCustomValidity('Informe seu endereço')"
+    oninput="this.setCustomValidity('')"><br><br>
 
-    <!--Espaço para as obervações-->
-    <label for="observarções">Observarções</label><br>
-    <textarea name="ObservarçõesSorvetes" id="Observarções" rows="4" cols="30" required
-      placeholder="Informe caso necessite de alguma alteração, caso não tenha nenhuma observação, escreva 'Sem Observações'"
-      oninvalid="this.setCustomValidity('Informe caso necessite de alguma alteração')"
-      oninput="this.setCustomValidity('')" minlength="1" maxlength="100"></textarea>
-    <br><br>
+<!--Espaço para as obervações-->
+<label for="observarções">Observarções</label><br>
+<textarea name="ObservarçõesSorvetes" id="Observarções" rows="4" cols="30" required
+    placeholder="Informe caso necessite de alguma alteração, caso não tenha nenhuma observação, escreva 'Sem Observações'"
+    oninvalid="this.setCustomValidity('Informe caso necessite de alguma alteração')"
+    oninput="this.setCustomValidity('')" minlength="1" maxlength="100"></textarea>
 
-    <!-- Botão -->
-    <button type="submit">Fazer Pedido</button>
+<br><br>
 
-  </form>
+<!-- Botão -->
+<button type="button" id="btPedido">Fazer Pedido</button>
 
-  <h3 id="resultado"></h3>
-  <footer>
+</form>
+
+<h3 id="resultado"></h3>
+
+<footer>
     <p>&copy; 2026 - Sorveteria Nuvem | Projeto Integrador</p>
-  </footer>
+</footer>
+
+<script src="./js/formulario.js"></script>
+
 </body>
 
 </html>
+
+    
