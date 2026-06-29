@@ -37,19 +37,40 @@ nav ul {
   list-style: none;
 }
 
-nav a {
+nav li {
+  margin-top: 20px;
+}
 
+nav a {
   text-decoration: none;
   color: var(--branco);
   background: rgba(255, 255, 255, 0.2);
   padding: 12px 20px;
   border-radius: 20px;
+  margin: 5px;
+  display: inline-block;
   font-weight: bold;
   transition: 0.3s;
   border: 2px solid var(--tituloNuvem);
   color: var(--tituloNuvem);
 }
 
+.gerenciarProdutos {
+
+  background: var(--rosa-botao);
+}
+
+.gerenciarProdutos:hover {
+
+  background: var(--rosa-hover);
+  transform: scale(1.05);
+}
+
+nav a:hover {
+
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
 /* TEXTO INTRODUTÓRIO */
 main {
   max-width: 800px;
