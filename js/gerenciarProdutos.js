@@ -67,7 +67,6 @@ function cadastrarProduto() {
         salvarProdutosLocalStorage();
 
         limparCampos();
-        outCadastro.innerHTML = "";
     }
 }
 
@@ -205,6 +204,7 @@ function limparCampos() {
     inPreco.value = "";
     sltFaixaPreco.selectedIndex = 0;
     inEstoque.value = "";
+    outCadastro.innerHTML = "";
 }
 
 function cancelarEdicao() {
