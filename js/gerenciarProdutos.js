@@ -48,9 +48,7 @@ const sltTipo = document.getElementById("sltTipo");
 const sltSabor = document.getElementById("sltSabor");
 const inPreco = document.getElementById("inPreco");
 const inEstoque = document.getElementById("inEstoque");
-const inBuscaProduto = document.getElementById("inBuscaProduto");
 const sltFaixaPreco = document.getElementById("sltFaixaPreco");
-const grupoBuscaProduto = document.getElementById("grupoBuscaProduto");
 const grupoFaixaPreco = document.getElementById("grupoFaixaPreco");
 
 const btCadastrar = document.getElementById("btCadastrar");
@@ -149,19 +147,10 @@ function pegarDados() {
 
 function consultarProduto() {
 
-    var areaConsultaEstavaOculta = grupoBuscaProduto.hidden;
-
-    exibirBuscaProduto();
-
-    if (areaConsultaEstavaOculta == true) {
-        inBuscaProduto.focus();
-        return;
-    }
-
-    var pesquisa = inBuscaProduto.value.trim().toUpperCase();
+    var pesquisa = inNome.value.trim().toUpperCase();
 
     if (pesquisa == "") {
-        inBuscaProduto.focus();
+        inNome.focus();
     } else {
         var encontrou = false;
         var produtosEncontrados = [];
@@ -189,11 +178,6 @@ function consultarProduto() {
     }
 }
 
-function exibirBuscaProduto() {
-
-    grupoBuscaProduto.hidden = false;
-}
-
 function exibirFiltroFaixaPreco() {
 
     grupoFaixaPreco.hidden = false;
@@ -210,54 +194,50 @@ function consultarFaixaPreco() {
         return;
     }
 
-    if (sltFaixaPreco.value == "1") {
+    var faixaSelecionada = sltFaixaPreco.value;
 
-        alert("Selecione uma faixa de preço!");
-        sltFaixaPreco.focus();
-
-    } else {
-
-        var faixaSelecionada = sltFaixaPreco.value;
-
-        var encontrou = false;
-        var produtosEncontrados = [];
-        var indicesEncontrados = [];
-
-        outCadastro.innerHTML = "";
-
-        for (var ind = 0; ind < vetProdutos.length; ind++) {
-
-            if (
-                faixaSelecionada == "todos" ||
-
-                (faixaSelecionada == "baixo" &&
-                    vetProdutos[ind].preco <= 10) ||
-
-                (faixaSelecionada == "medio" &&
-                    vetProdutos[ind].preco > 10 &&
-                    vetProdutos[ind].preco <= 20) ||
-
-                (faixaSelecionada == "alto" &&
-                    vetProdutos[ind].preco > 20)
-            ) {
-
-                produtosEncontrados.push(vetProdutos[ind]);
-                indicesEncontrados.push(ind);
-
-                encontrou = true;
-            }
-        }
-
-        if (encontrou == false) {
-
-            outCadastro.innerHTML = '<p class="mensagem-vazia">Não há produtos nessa faixa de preço.</p>';
-        } else {
-            renderizarCardsProdutos(produtosEncontrados, indicesEncontrados);
-        }
-
-        limparCampos();
-        cancelarEdicao();
+    if (faixaSelecionada == "1") {
+        faixaSelecionada = "todos";
     }
+
+    var encontrou = false;
+    var produtosEncontrados = [];
+    var indicesEncontrados = [];
+
+    outCadastro.innerHTML = "";
+
+    for (var ind = 0; ind < vetProdutos.length; ind++) {
+
+        if (
+            faixaSelecionada == "todos" ||
+
+            (faixaSelecionada == "baixo" &&
+                vetProdutos[ind].preco <= 10) ||
+
+            (faixaSelecionada == "medio" &&
+                vetProdutos[ind].preco > 10 &&
+                vetProdutos[ind].preco <= 20) ||
+
+            (faixaSelecionada == "alto" &&
+                vetProdutos[ind].preco > 20)
+        ) {
+
+            produtosEncontrados.push(vetProdutos[ind]);
+            indicesEncontrados.push(ind);
+
+            encontrou = true;
+        }
+    }
+
+    if (encontrou == false) {
+
+        outCadastro.innerHTML = '<p class="mensagem-vazia">Não há produtos nessa faixa de preço.</p>';
+    } else {
+        renderizarCardsProdutos(produtosEncontrados, indicesEncontrados);
+    }
+
+    limparCampos();
+    cancelarEdicao();
 }
 
 function limparCampos() {
@@ -268,7 +248,6 @@ function limparCampos() {
     inPreco.value = "";
     sltFaixaPreco.selectedIndex = 0;
     inEstoque.value = "";
-    inBuscaProduto.value = "";
 }
 
 function cancelarEdicao() {
