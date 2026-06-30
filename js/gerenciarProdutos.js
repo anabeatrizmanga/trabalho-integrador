@@ -104,8 +104,14 @@ function pegarDados() {
     // Se não houver dados salvos, o vetor recebe um array vazio.
     const produtos = JSON.parse(localStorage.getItem("listaprodutos"));
     console.log(produtos);
-
-    vetProdutos = produtos || [];
+    //vetProdutos = produtos || [];
+    /*if (produtos == null){ //indica que não há listaprodutos no localStorage
+        vetProdutos = [];
+    } else {
+        vetProdutos = produtos;
+    }
+    */
+    vetProdutos = (produtos == null) ? [] : produtos;
 }
 
 function consultarProduto() {
