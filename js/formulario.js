@@ -6,6 +6,17 @@ const endereco = document.getElementById("endereco");
 const observacoes = document.getElementById("Observarcoes");
 const divEspecial = document.getElementById("divEspecial");
 
+const granulado = document.getElementById("granulado");
+const leiteCondensado = document.getElementById("leiteCondensado");
+const nutella = document.getElementById("nutella");
+const caldaDeChocolate = document.getElementById("caldaDeChocolate");
+const leiteEmPo = document.getElementById("leiteEmPo");
+const banana = document.getElementById("banana");
+const pacoca = document.getElementById("pacoca");
+const confetes = document.getElementById("confetes");
+
+const vetTamanho = document.getElementsByName("tamanho");
+
 const btPedido = document.getElementById("btPedido");
 
 let pedidos = [];
@@ -13,12 +24,11 @@ let pedidos = [];
 carregarPedidos();
 
 btPedido.addEventListener("click", fazerPedido);
+tipoDeProduto.addEventListener("change", mostrarEspecial);
 
 function fazerPedido() {
 
     let tamanho = "";
-
-    let vetTamanho = document.getElementsByName("tamanho");
 
     for (let ind = 0; ind < vetTamanho.length; ind++) {
 
@@ -30,30 +40,31 @@ function fazerPedido() {
 
     let complementos = "";
 
-    if (document.getElementById("granulado").checked == true) {
+    if (granulado.checked == true) {
         complementos += "Granulado ";
     }
-    if (document.getElementById("leiteCondensado").checked == true) {
+    if (leiteCondensado.checked == true) {
         complementos += "Leite Condensado ";
     }
-    if (document.getElementById("nutella").checked == true) {
+    if (nutella.checked == true) {
         complementos += "Nutella ";
     }
-    if (document.getElementById("caldaDeChocolate").checked == true) {
+    if (caldaDeChocolate.checked == true) {
         complementos += "Calda de Chocolate ";
     }
-    if (document.getElementById("leiteEmPo").checked == true) {
+    if (leiteEmPo.checked == true) {
         complementos += "Leite em Pó ";
     }
-    if (document.getElementById("banana").checked == true) {
+    if (banana.checked == true) {
         complementos += "Banana ";
     }
-    if (document.getElementById("pacoca").checked == true) {
+    if (pacoca.checked == true) {
         complementos += "Paçoca ";
     }
-    if (document.getElementById("confetes").checked == true) {
+    if (confetes.checked == true) {
         complementos += "Confetes ";
     }
+
     if (inNome.value == "") {
 
         alert("Informe seu nome.");
@@ -105,11 +116,12 @@ function fazerPedido() {
 
         alert("Pedido realizado com sucesso!");
 
+        limparCampos();
+
     }
 
 }
 
-tipoDeProduto.addEventListener("change", mostrarEspecial);
 function mostrarEspecial() {
 
     if (tipoDeProduto.value == "especiaisDaCasa") {
@@ -123,6 +135,7 @@ function mostrarEspecial() {
     }
 
 }
+
 function salvarPedidos() {
 
     let jsonPedidos = JSON.stringify(pedidos);
@@ -142,5 +155,31 @@ function carregarPedidos() {
     }
 
     console.log(pedidos);
+
+}
+
+function limparCampos() {
+
+    inNome.value = "";
+    tipoDeProduto.selectedIndex = 0;
+    tipoDeEspeciaisDaCasa.selectedIndex = 0;
+    sabor.selectedIndex = 0;
+    endereco.value = "";
+    observacoes.value = "";
+
+    for (let ind = 0; ind < vetTamanho.length; ind++) {
+        vetTamanho[ind].checked = false;
+    }
+
+    granulado.checked = false;
+    leiteCondensado.checked = false;
+    nutella.checked = false;
+    caldaDeChocolate.checked = false;
+    leiteEmPo.checked = false;
+    banana.checked = false;
+    pacoca.checked = false;
+    confetes.checked = false;
+
+    divEspecial.setAttribute("hidden", true);
 
 }
