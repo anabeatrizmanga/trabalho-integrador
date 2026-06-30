@@ -14,6 +14,17 @@ O projeto foi criado para aplicar conceitos fundamentais de desenvolvimento fron
 
 ---
 
+## Integrantes
+
+Este projeto foi desenvolvido pelos seguintes integrantes:
+
+- Ana Beatriz Manga
+- Catharine Scheffler
+- Miguel Broetto
+- Vicinius Pratti
+
+---
+
 ## Objetivos
 
 - Desenvolver uma interface moderna e agradável;
