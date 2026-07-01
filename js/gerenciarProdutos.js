@@ -69,20 +69,12 @@ function cadastrarProduto() {
             alert("Produto alterado!");
         }
 
+        // Salva no localStorage para não perder ao recarregar a página
         salvarProdutosLocalStorage();
 
+        // Reseta todos os campos para o estado inicial
         limparCampos();
     }
-}
-
-function armazanarDados(produto) {
-
-    let vetProdutos = [];
-    vetProdutos.push(produto);
-    let jsonVetProdutos = JSON.stringify(vetProdutos);
-    localStorage.setItem("listaprodutos", jsonVetProdutos);
-
-    //localStorage.setItem("produtos", JSON.stringify([produto]));
 }
 
 function mostrarProdutos() {
@@ -97,13 +89,16 @@ function mostrarProdutos() {
     }
 }
 
+// Garante que os dados do localStorage sejam carregados ao abrir a página
 pegarDados();
 
 function pegarDados() {
 
-    // Se não houver dados salvos, o vetor recebe um array vazio.
     const produtos = JSON.parse(localStorage.getItem("listaprodutos"));
     console.log(produtos);
+
+    // Se não houver dados salvos, o vetor recebe um array vazio.
+
     //vetProdutos = produtos || [];
     /*if (produtos == null){ //indica que não há listaprodutos no localStorage
         vetProdutos = [];
@@ -117,7 +112,7 @@ function pegarDados() {
 function consultarProduto() {
 
     // A consulta usa o próprio campo "Nome do Sorvete".
-    var pesquisa = inNome.value.trim().toUpperCase();
+    var pesquisa = inNome.value.trim().toUpperCase(); // Remove os espaços nas extremidades e comverte o nome em maiúsculo.
 
     if (pesquisa == "") {
         inNome.focus();
