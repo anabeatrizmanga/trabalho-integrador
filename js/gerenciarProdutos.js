@@ -118,15 +118,15 @@ function consultarProduto() {
         inNome.focus();
     } else {
         var encontrou = false;
-        var produtosEncontrados = [];
-        var indicesEncontrados = [];
+        var vetProdutosEncontrados = [];
+        var vetIndicesEncontrados = [];
 
         for (var ind = 0; ind < vetProdutos.length; ind++) {
 
             if (vetProdutos[ind].nome.toUpperCase().includes(pesquisa)) {
 
-                produtosEncontrados.push(vetProdutos[ind]);
-                indicesEncontrados.push(ind);
+                vetProdutosEncontrados.push(vetProdutos[ind]);
+                vetIndicesEncontrados.push(ind);
 
                 encontrou = true;
             }
@@ -135,7 +135,7 @@ function consultarProduto() {
         if (encontrou == false) {
             outCadastro.innerHTML = '<p class="mensagem-vazia">Produto não encontrado.</p>';
         } else {
-            renderizarCardsProdutos(produtosEncontrados, indicesEncontrados);
+            renderizarCardsProdutos(vetProdutosEncontrados, vetIndicesEncontrados);
         }
 
         limparCampos();
@@ -172,8 +172,8 @@ function consultarFaixaPreco() {
         }
 
         var encontrou = false;
-        var produtosEncontrados = [];
-        var indicesEncontrados = [];
+        var vetProdutosEncontrados = [];
+        var vetIndicesEncontrados = [];
 
         outCadastro.innerHTML = "";
 
@@ -193,8 +193,8 @@ function consultarFaixaPreco() {
                     vetProdutos[ind].preco > 20)
             ) {
 
-                produtosEncontrados.push(vetProdutos[ind]);
-                indicesEncontrados.push(ind);
+                vetProdutosEncontrados.push(vetProdutos[ind]);
+                vetIndicesEncontrados.push(ind);
 
                 encontrou = true;
             }
@@ -204,7 +204,7 @@ function consultarFaixaPreco() {
 
             outCadastro.innerHTML = '<p class="mensagem-vazia">Não há produtos nessa faixa de preço.</p>';
         } else {
-            renderizarCardsProdutos(produtosEncontrados, indicesEncontrados);
+            renderizarCardsProdutos(vetProdutosEncontrados, vetIndicesEncontrados);
         }
 
         limparCampos();
