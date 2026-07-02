@@ -19,7 +19,7 @@ const vetTamanho = document.getElementsByName("tamanho");
 
 const btPedido = document.getElementById("btPedido");
 
-let pedidos = [];
+const pedidos = [];
 
 carregarPedidos();
 
